@@ -1,0 +1,95 @@
+.combo-box {
+  z-index: 5;
+  position: absolute;
+  width: 100%;
+  background: $ui-02;
+  border: 1px solid $text-03;
+  text-align: left;
+  display: none;
+}
+
+.combo-box[class*="open"] {
+  display: block;
+}
+
+.combo-box__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 $spacing-md 0 $spacing-md;
+  background: $ui-01;
+  color: $text-01;
+}
+
+.autocomplete {
+  position: relative;
+  background: $ui-02;
+  border: none;
+  padding: $spacing-sm 0;
+}
+
+.autocomplete__item {
+  height: rem(36px);
+  padding: 0;
+  &:hover {
+    background: $ui-01;
+  }
+
+  &+& {
+    margin-top: 1px;
+  }
+}
+
+.autocomplete__link {
+  @include text-overflow(100%);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: $text-02;
+  padding: 0 $spacing-md;
+}
+
+.autocomplete__item .autocomplete__title {
+  font-weight: 500;
+  color: $primary;
+}
+
+.autocomplete--open-history {
+  .autocomplete__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .autocomplete__item button {
+    margin-right: $spacing-sm;
+  }
+}
+
+.recent-search{
+  background: $ui-02;
+  border: none;
+  padding: $spacing-sm 0;
+}
+
+.recent-search__list{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 $spacing-md;
+}
+
+.keyword{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: rem(15px);
+  margin: $spacing-3xs $spacing-2xs;
+  padding: 0 $spacing-xs;
+  border: 1px solid $ui-04;
+}
+
+// IDC 오버라이딩
+.text-input-group--lg .text-input:nth-last-child(4):not(div){
+  padding-right: $spacing-sm * 6 !important;
+}

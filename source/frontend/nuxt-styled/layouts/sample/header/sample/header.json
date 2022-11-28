@@ -1,0 +1,46 @@
+{
+  "ko": {
+    "nav-title": {
+      "home": "홈",
+      "image": "이미지 샘플",
+      "search": "검색 샘플",
+      "data-search": "데이터 검색",
+      "keyword-search": "데이터 통합 검색",
+      "keyword-search-data-detail": "데이터 상세",
+      "keyword-search-map": "데이터 맵 겁색",
+      "data-registration": "데이터 등록",
+      "logout": "로그아웃"
+    },
+    "nav-url": {
+      "home": "/",
+      "image": "/sample/image?count=20",
+      "search": "/sample/search",
+      "keyword-search": "/sample/keyword-search",
+      "keyword-search-data-detail": "/sample/keyword-search-data-detail",
+      "keyword-search-map": "/sample/keyword-search-map",
+      "data-registration":  "/sample/data-registration"
+    }
+  },
+  "en": {
+    "nav-title": {
+      "home": "Home",
+      "image": "Image Sample",
+      "search": "Search Sample",
+      "data-search": "Data Search",
+      "keyword-search": "Search",
+      "keyword-search-data-detail": "Data Detail",
+      "keyword-search-map": "Data Detail",
+      "data-registration":  "data registration",
+      "logout": "Logout"
+    },
+    "nav-url": {
+      "home": "/",
+      "image": "/sample/image?count=20",
+      "search": "/sample/search",
+      "keyword-search": "/sample/keyword-search",
+      "keyword-search-data-detail": "/sample/keyword-search-data-detail",
+      "keyword-search-map": "/sample/keyword-search-map",
+      "data-registration":  "/sample/data-registration"
+    }
+  }
+}

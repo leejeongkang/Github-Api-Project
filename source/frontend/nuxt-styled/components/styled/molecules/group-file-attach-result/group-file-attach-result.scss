@@ -1,0 +1,79 @@
+// 첨부된 파일 리스트
+.attached-file__top-bar {
+  display: flex;
+  align-items: center;
+  height: rem(32px);
+
+  small {
+    @include font-weight("regular");
+    @include font-size("12");
+    flex-shrink: 0;
+    color: $text-03;
+    height: 100%;
+    padding: $spacing-sm $spacing-xs 0 0;
+    margin: 0;
+  }
+
+  .button {
+    flex-shrink: 0;
+  }
+}
+
+.attached-file__title {
+  @include font-weight("regular");
+  @include font-size("16");
+  flex-grow: 1;
+  color: $text-01;
+  line-height: rem(32px);
+}
+
+.attached-file__group {
+  overflow: auto;
+  width: 100%;
+  height: rem(120px);
+  padding: $spacing-2xs 0 $spacing-xs $spacing-xs;
+  margin-top: $spacing-2xs;
+  border-radius: rem(5px);
+  border: 1px solid $hover-ui-accent;
+}
+
+.attached-file__item {
+  display: flex;
+  height: rem(24px);
+  line-height: rem(24px);
+
+  .svg-icon {
+    width: rem(16px);
+    height: rem(16px);
+    fill: $secondary;
+
+    &:hover {
+      fill: $hover-secondary;
+    }
+    &:active {
+      fill: $active-secondary;
+    }
+  }
+}
+
+.attached-file__item-title {
+  @include font-weight("regular");
+  @include font-size("12");
+  flex-grow: 1;
+  color: $text-02;
+
+  .svg-icon {
+    width: rem(16px);
+    height: rem(16px);
+    fill: $text-05;
+  }
+}
+
+.attached-file__item-volume {
+  @include font-weight("regular");
+  @include font-size("12");
+  flex-shrink: 0;
+  width: rem(80px);
+  text-align: right;
+  color: $text-03;
+}

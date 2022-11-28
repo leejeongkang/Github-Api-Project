@@ -1,0 +1,54 @@
+.data-info {
+  display: flex;
+  align-items: center;
+}
+
+.data-info>* {
+  position: relative;
+  line-height: rem(26px);
+}
+
+.data-info dl {
+  display: flex;
+  align-items: center;
+  margin: $spacing-2xs $spacing-sm $spacing-2xs 0;
+  padding: 0 $spacing-sm 0 0;
+}
+
+.data-info dl:last-child {
+  margin-right: 0;
+  padding: 0;
+}
+
+.data-info dl dd {
+  margin: 0 0 0 $spacing-sm;
+  padding: 0 0 0 $spacing-sm;
+}
+
+.data-info dl dd:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: rem(1px);
+  height: rem(13px);
+  margin-top: rem(-7px);
+  background: $ui-03;
+}
+
+.data-info dl dt,
+.data-info dl dd {
+  position: relative;
+  color: $text-05;
+  white-space: nowrap;
+}
+
+.data-info dt i {
+  margin: 0 0 $spacing-3xs 0;
+}
+
+.data-info dt span {
+  margin: 0 0 0 $spacing-3xs;
+  color: $text-02;
+  white-space: nowrap;
+}

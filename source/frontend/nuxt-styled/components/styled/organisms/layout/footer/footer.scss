@@ -1,0 +1,169 @@
+/* footer
+        ***************************************************************************/
+footer {
+  position: relative;
+}
+
+/* footer - top */
+.footer-top {
+  width: 100%;
+  height: rem(50px);
+  border-top: 1px solid $ui-04;
+  background: $ui-02;
+}
+
+.footer-top__inner {
+  width: rem(1210px);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.footer-top__inner .mu-value {
+  border: none;
+  border-left: 1px solid $ui-04;
+  border-right: 1px solid $ui-04;
+}
+
+/* footer - top > menu */
+.footer-top__list ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-top__item-text {
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.footer-top__item + .footer-top__item {
+  margin-left: rem(55px);
+}
+
+/* footer - top,bottom 공통 관련사이트 */
+.footer-top__family-site {
+  display: flex;
+  margin-left: auto;
+}
+
+/* footer - bottom */
+.footer-bottom {
+  border-top: 1px solid $ui-04;
+  background: $ui-02;
+}
+
+.footer-bottom__inner {
+  display: flex;
+  align-items: center;
+  width: rem(1210px);
+  height: rem(98px);
+  margin: 0 auto;
+}
+
+.footer-bottom__family-site {
+  align-items: center;
+}
+
+.logo {
+  width: rem(160px);
+  height: rem(45px);
+}
+
+.logo__hidden-text {
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  text-indent: -9999px;
+}
+
+.footer-bottom__info {
+  flex: 1;
+  padding: rem(5px) 0 0 $spacing-2xl;
+}
+
+/* PC none */
+.footer-bottom__text-line,
+.footer-bottom__info-text {
+  @include font-size("13");
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+}
+
+.footer-bottom__info-sect {
+  padding: 0 rem(3px);
+}
+
+.footer-bottom__copyright {
+  margin-top: $spacing-2xs;
+}
+
+@include template-respond-to('breakpoint-lg') {
+
+  /* footer - top */
+  .footer-top__inner {
+    width: 100%;
+    padding: 0 rem(10px);
+  }
+
+  /* footer - top > menu */
+  .footer-top__list {
+    width: 100%;
+  }
+
+  .footer-top__list ul {
+    justify-content: center;
+  }
+
+  .footer-top__item-text {
+    font-size: 12px;
+  }
+
+  /* footer - top,bottom 공통 관련사이트 */
+  .footer-top__family-site {
+    display: none;
+  }
+
+  /* footer - bottom */
+  .footer-bottom__inner {
+    flex-direction: column-reverse;
+    width: 100%;
+    height: auto;
+    padding: rem(20px) rem(10px);
+  }
+
+  footer .logo {
+    width: rem(112px);
+    height: rem(34px);
+    background-size: 112px auto;
+  }
+
+  .footer-bottom__info {
+    padding: 0;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
+}
+
+@include template-respond-to('breakpoint-md') {
+
+  /* footer - top > menu */
+  .footer-top__list ul {
+    justify-content: space-between;
+  }
+
+  .footer-top__item + .footer-top__item {
+    margin: 0;
+  }
+
+  /* footer - bottom */
+  .footer-bottom__info-text {
+    display: inline-block;
+  }
+
+  /* Mobile block */
+
+}

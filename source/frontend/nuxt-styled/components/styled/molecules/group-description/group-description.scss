@@ -1,0 +1,39 @@
+.description{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-right: 1px solid $ui-04;
+  border-left: 1px solid $ui-04;
+  border-bottom: 1px solid $ui-04;
+}
+
+.description__term{
+  width: 30%;
+  padding: $spacing-xs;
+  display: flex;
+  align-items: center;
+  background-color: $ui-01;
+  border-top: 1px solid $ui-04;
+}
+
+.description__description{
+  width: calc(100% - 30%);
+  padding: $spacing-xs;
+  display: flex;
+  align-items: center;
+  background-color: $ui-02;
+  border-top: 1px solid $ui-04;
+}
+
+.description__list{
+  li{
+    color: $text-02;
+    & + &{
+      margin-top: $spacing-3xs;
+    }
+  }
+}
+
+.description__description-text{
+  color: $text-02;
+}

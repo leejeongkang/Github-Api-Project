@@ -1,0 +1,13 @@
+.search-result {
+  width: calc(100% - 240px);
+  margin: 0 auto;
+  padding-bottom: rem(120px);
+}
+
+
+@include template-respond-to('breakpoint-lg') {
+  .search-result {
+    width: 100%;
+    padding: $spacing-sm;
+  }
+}

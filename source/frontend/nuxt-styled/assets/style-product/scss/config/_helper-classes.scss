@@ -1,0 +1,24 @@
+.required {
+  @include font-size("14");
+  @include font-weight("bold");
+  display: inline-block;
+  width: rem(10px);
+  height: rem(17px);
+  padding: 0 $spacing-3xs;
+  color: $negative;
+  vertical-align: middle;
+}
+
+.color-emphasis {
+  color: $primary;
+}
+
+.v-group--gap-12{
+  & > *:not(:last-child) {
+    margin-bottom: $spacing-sm;
+  }
+
+  & + & {
+    margin-top: $spacing-sm;
+  }
+}

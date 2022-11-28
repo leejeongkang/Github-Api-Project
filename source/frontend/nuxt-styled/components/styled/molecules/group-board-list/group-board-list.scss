@@ -1,0 +1,205 @@
+/* 목록형 기본 그리드 */
+
+.board-list {
+  width: 100%;
+  border: 0;
+
+  th, td {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  td.text-left {
+    text-align: left !important;
+  }
+
+  .data-label, .inner-mobile {
+    display: none;
+  }
+
+  thead {
+    tr {
+      height: rem(56px);
+    }
+
+    th {
+      border-top: 2px solid $text-01;
+      border-bottom: 1px solid $ui-04;
+      color: $text-01;
+      font-weight: 400;
+    }
+
+    th:first-child:before {
+      content: none;
+    }
+
+    th:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: rem(20px);
+      width: rem(1px);
+      height: rem(14px);
+      background: $ui-04;
+    }
+  }
+
+  tbody {
+    th, td {
+      padding: $spacing-xs $spacing-md;
+      border-bottom: 1px solid $ui-04;
+    }
+
+    tr {
+      height: rem(50px);
+    }
+
+    td {
+      color: $text-02;
+    }
+
+    td a {
+      overflow: hidden;
+      display: inline-block;
+      line-height: 1.3;
+      max-width: calc(100% - 55px);
+      color: $text-01;
+      font-weight: 500;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+    }
+
+    td a:hover,
+    td a:hover * {
+      color: $primary;
+    }
+
+    td .badge {
+      display: inline-table;
+      margin-left: $spacing-3xs;
+    }
+  }
+}
+
+/* 화면 너비 0 ~ 930px */
+@include template-respond-to('breakpoint-lg') {
+
+  /* only PC */
+  .pc-only {
+    display: none !important;
+  }
+
+  /* only Mobile */
+  .mobile-only {
+    display: block !important;
+  }
+
+  /* mobile-show 공통분리 */
+  .mobile-show .data-label {
+    display: inline-block;
+    margin-right: $spacing-2xs;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  .inner-mobile {
+    position: relative;
+    display: flex !important;
+    flex-wrap: wrap;
+    margin-top: rem(10px);
+  }
+
+  /* 목록형 기본 그리드 */
+  /* 모바일에서 리스트형태 */
+  .board-list {
+    border-top: 2px solid $text-01;
+
+    colgroup {
+      display: none;
+    }
+
+    td:not(.mobile-show) {
+      display: none;
+    }
+
+    td.mobile-show {
+      display: block;
+      height: auto;
+      padding: $spacing-xs;
+    }
+
+    td.mobile-show a {
+      white-space: normal;
+      width: auto;
+    }
+
+    thead{
+      tr {
+        height: 0;
+      }
+
+      th {
+        display: none;
+      }
+    }
+
+    tbody {
+      td a {
+        font-size: 16px;
+      }
+
+      td.mobile-show .svg-icon {
+        vertical-align: top;
+      }
+
+      .data-info dl {
+        margin: 0;
+      }
+    }
+  }
+
+  /* 모바일에서 기본 테이블형태 유지 */
+  .mob-tbl {
+    colgroup {
+      display: table-column-group;
+    }
+
+    col {
+      display: none;
+    }
+
+    col.mobile-show {
+      display: table-column !important;
+    }
+
+    .mobile-show {
+      display: table-cell !important;
+    }
+
+    .inner-mobile, .data-info {
+      display: none !important;
+    }
+
+    thead {
+      tr {
+        height: rem(56px);
+      }
+
+      th.mobile-show:before {
+        display: none;
+      }
+    }
+
+    tbody {
+      td {
+        min-height: rem(50px);
+      }
+
+      td a {
+        max-width: 100%;
+      }
+    }
+  }
+
+}

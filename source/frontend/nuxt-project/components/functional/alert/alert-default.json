@@ -1,0 +1,54 @@
+{
+  "ko": {
+    "alert": {
+      "confirm": "확인",
+      "cancel": "취소",
+      "property": {
+        "icon-theme": "info",
+        "cancel-button-theme": "secondary",
+        "confirm-button-theme": "primary",
+        "type": "default"
+      }
+    },
+    "alert-success": {
+      "title": "[성공]",
+      "icon-theme": "success",
+      "confirm-button-theme": "tertiary",
+      "confirm-button-text": "확인",
+      "type": "default"
+    },
+    "alert-error": {
+      "title": "[오류]",
+      "icon-theme": "error",
+      "confirm-button-theme": "tertiary",
+      "confirm-button-text": "확인",
+      "type": "default"
+    }
+  },
+  "en": {
+    "alert": {
+      "confirm": "Ok",
+      "cancel": "Cancel",
+      "property": {
+        "icon-theme": "info",
+        "cancel-button-theme": "secondary",
+        "confirm-button-theme": "primary",
+        "type": "default"
+      }
+    },
+    "alert-success": {
+      "title": "[Success]",
+      "icon-theme": "success",
+      "confirm-button-theme": "tertiary",
+      "confirm-button-text": "OK",
+      "type": "default"
+    },
+    "alert-error": {
+      "title": "[Fail]",
+      "icon-theme": "error",
+      "confirm-button-theme": "tertiary",
+      "confirm-button-text": "OK",
+      "type": "default"
+    }
+  }
+}

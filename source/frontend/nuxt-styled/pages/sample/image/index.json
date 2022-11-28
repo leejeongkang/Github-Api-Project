@@ -1,0 +1,16 @@
+{
+  "ko": {
+    "image": {
+      "title": "이미지 리스트 샘플",
+      "count": "입력하신 숫자만큼 이미지가 출력 됩니다.",
+      "submit": "제출"
+    }
+  },
+  "en": {
+    "image": {
+      "title": "Image List Sample",
+      "count": "Input Random Generate Image Counts",
+      "submit": "Submit"
+    }
+  }
+}

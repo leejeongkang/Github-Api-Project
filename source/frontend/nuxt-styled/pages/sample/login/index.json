@@ -1,0 +1,12 @@
+{
+  "ko": {
+    "login": {
+      "login-success": "로그인 했습니다."
+    }
+  },
+  "en": {
+    "login": {
+      "login-success": "Login Success"
+    }
+  }
+}

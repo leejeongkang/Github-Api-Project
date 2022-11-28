@@ -1,0 +1,96 @@
+.file-attach-group {
+  display: flex;
+}
+
+.file-attach-list {
+  flex: 1;
+  margin-right: $spacing-xs;
+}
+
+.file-attach {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: rem(40px);
+}
+
+.file-attach + .file-attach {
+  margin-top: $spacing-2xs;
+}
+
+.file-attach > *:not(:last-child){
+  margin-right: 8px;
+}
+
+.file-attach__text-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $ui-04;
+  background-color: $ui-02;
+
+  &:hover{
+    border-color: $ui-03;
+  }
+
+  &--focused {
+    border-color: $secondary;
+    box-shadow: 0 0 rem(4px) rgba(77, 174, 255, 0.4);
+
+    &:hover,
+    &:hover:active,
+    &:hover:focus {
+      border-color: $secondary;
+      box-shadow: 0 0 rem(4px) rgba(77, 174, 255, 0.4);
+    }
+  }
+
+  &--disabled {
+    border-color: $disabled-01;
+
+    &:hover,
+    &:hover:active,
+    &:hover:focus {
+      border-color: $disabled-01;
+
+      .upload__file-button {
+        border-left-color: $disabled-01;
+      }
+    }
+  }
+}
+
+.file-attach__input {
+  height: inherit;
+  flex: 1;
+  padding: 0 $spacing-md;
+  border: none;
+}
+
+.file-attach__input[readonly="readonly"] {
+  cursor: default;
+  background: $ui-02;
+  color: $text-05;
+}
+
+.file-attach__delete-button {
+  margin-right: $spacing-2xs;
+}
+
+.file-attach__hidden-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: rem(1px);
+  height: 100%;
+  opacity: 0;
+}
+
+@include template-respond-to('breakpoint-lg') {
+  .file-attach__text-input {
+    flex: 1;
+  }
+}

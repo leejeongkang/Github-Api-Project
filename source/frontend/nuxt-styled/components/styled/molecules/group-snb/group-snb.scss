@@ -1,0 +1,33 @@
+.snb{
+
+}
+
+.snb__title{
+  @include text-overflow();
+  @include font-size("24");
+  @include font-weight("medium");
+  padding-bottom: $spacing-lg;
+  border-bottom: 2px solid $text-01;
+
+}
+
+.snb__list{
+  padding: rem(20px) 0;
+}
+
+.snb__item{
+
+}
+
+.snb__link{
+  @include text-overflow();
+  @include font-size("16");
+  padding: $spacing-md;
+  color: $text-01;
+}
+
+.snb__item--selected .snb__link{
+  background-color: $secondary;
+  color: $text-04;
+  border-radius: rem(5px);
+}

@@ -1,0 +1,26 @@
+table {
+  border: 0;
+}
+
+.faq__tool-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-xs;
+}
+
+.checkboxes {
+  & > *:not(:last-child) {
+    margin-right: $spacing-xs !important;
+  }
+}
+
+.text-input-group {
+  margin-left: auto;
+}
+
+/* 화면 너비 0 ~ 930px */
+@include template-respond-to('breakpoint-lg') {
+  .faq__tool-bar {
+    flex-direction: column;
+  }
+}

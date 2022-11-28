@@ -1,0 +1,48 @@
+// Color Theme Variables
+$primary: #001F60 !default;
+$secondary: #367BFF !default;
+$negative: #ef594f !default;
+$ui-01: #EDEFF5 !default;
+$ui-02: #ffffff !default;
+$ui-03: #b2bdcb !default;
+$ui-04: #C8CACE !default;
+$ui-05: #F7F7FA !default; // table - bg
+$text-01: #00010D !default;
+$text-02: #5D5D62 !default;
+$text-03: #8D8F95 !default;
+$text-04: #ffffff !default;
+$text-05: #abafba !default;
+$link: #606974 !default;
+$icon-01: #77889a !default;
+$icon-02: #367BFF !default;
+$inverse-01: #ffffff !default;
+$field-bg: #ffffff !default;
+$field-border: #dce1e8 !default;
+$support-01: #0747a6 !default;
+$support-02: #00875a !default;
+$support-03: #ffab00 !default;
+$support-04: #de350b !default;
+$overlay-01: rgba(#242e3d, 0.5) !default;
+$overlay-02: rgba($ui-02, 0.6) !default;
+
+// Interactive Tokesn
+$focus: $secondary !default;
+$default-focus: #367BFF !default;
+$hover-primary: #00339E !default;
+$hover-secondary: #4D8AFF !default;
+$hover-negative: #ff7e75 !default;
+$hover-ui-accent: #E2E7F5 !default;
+$hover-field-border: #b2bdcb !default;
+$hover-row: #f0f3f6 !default;
+$odd-row: #fafafa !default;
+$active-primary: #0050b6 !default;
+$active-secondary: #3375F2 !default;
+$active-negative: #e24d43 !default;
+$active-danger: #e24d43 !default;
+$active-ui-accent: #d9e8ff !default;
+$disabled-01: #f0f3f6 !default;
+$disabled-02: rgba(#abafba, 0.5) !default;
+
+//common breadcrumb
+$breadcrumb-text: $text-05 !default;
+$breadcrumb-bg: $hover-row !default;

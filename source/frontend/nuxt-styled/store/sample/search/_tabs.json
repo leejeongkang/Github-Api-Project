@@ -1,0 +1,26 @@
+[{
+  "title": "전체",
+  "type": "total",
+  "selected": true,
+  "counts": "123,123"
+}, {
+  "title": "뉴스기사",
+  "type": "news",
+  "counts": "6,500"
+}, {
+  "title": "뉴스댓글",
+  "type": "news-comments",
+  "counts": "12,323"
+}, {
+  "title": "카페 게시글",
+  "type": "cafe",
+  "counts": "5,323"
+}, {
+  "title": "카페댓글",
+  "type": "cafe-comments",
+  "counts": "123"
+}, {
+  "title": "블로그",
+  "type": "blog",
+  "counts": "90,323"
+}]

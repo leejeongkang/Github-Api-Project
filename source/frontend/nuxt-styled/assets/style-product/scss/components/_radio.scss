@@ -1,0 +1,17 @@
+// --------------------------------------------------
+// radio--right: input 과 label 위치가 바뀐 유형
+// --------------------------------------------------
+.radio.radio--right .radio__label:before {
+  left: unset;
+  right: 0;
+}
+
+.radio.radio--right .radio__label {
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+.radio.radio--right .radio__label:after {
+  left: unset;
+  right: 7px;
+}

@@ -1,0 +1,118 @@
+.subject .subject__wrap {
+  width: rem(1210px);
+  margin: 0 auto;
+}
+
+.subject__wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-xl $spacing-sm;
+}
+
+.subject__title-wrap {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subject__title {
+  height: rem(32px);
+  color: #333;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: $spacing-md;
+}
+
+.subject__desc {
+  display: block;
+  @include font-size("16");
+  color: $text-02;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.subject__menu-img-box {
+  margin: rem(-5px) $spacing-xl 0 $spacing-md;
+}
+
+.subject__menu-img-box .svg-icon {
+  width: 100%;
+  height: 100%;
+  fill: $primary;
+}
+
+.subject__menu-img-box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.subject__menu {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+/* subject > 부수설명UL */
+.subject__list {
+  margin: $spacing-md 0 0 0;
+}
+
+.subject__list-item {
+  @include font-size("13");
+  position: relative;
+  line-height: 1.6;
+  padding-left: $spacing-sm;
+  color: $text-03;
+}
+
+.subject__list-item:before {
+  content: "*";
+  position: absolute;
+  top: $spacing-3xs;
+  left: 0;
+}
+
+@include template-respond-to('breakpoint-lg') {
+
+  .subject .subject__wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding: rem(22px) rem(20px) $spacing-md rem(20px);
+  }
+
+  .subject__menu-img-box {
+    display: none;
+  }
+
+  .subject__title-wrap {
+    width: 100%;
+  }
+
+  .subject__sub-group {
+    position: relative;
+    margin-top: $spacing-md;
+    bottom: unset;
+    right: unset;
+    height: unset;
+    align-items: flex-end;
+  }
+
+  .subject__sub-group>button:only-child {
+    position: relative;
+    top: unset;
+    min-width: rem(200px);
+  }
+
+  .subject__list-item {
+    justify-content: center;
+  }
+}

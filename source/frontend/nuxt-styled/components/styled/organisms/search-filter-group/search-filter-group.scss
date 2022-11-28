@@ -1,0 +1,35 @@
+.search-filter-group{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  // 수평 방향
+  &.search-filter-group--horizontal{
+    flex-direction: row;
+
+    .search-filter{
+      border-right: none;
+      &:last-child{
+        border-right: 1px solid $ui-04;
+      }
+    }
+    // 샘플 스타일로 작업 시 제거 필요
+    &.main-contents__search-filter{
+      .search-filter{
+        width: 33.33%;
+      }
+    }
+  }
+  // 수직 방향
+  &.search-filter-group--vertical{
+    flex-direction: column;
+
+    .search-filter{
+      width: 100%;
+      border-bottom: none;
+      &:last-child{
+        border-bottom: 1px solid $ui-04;
+      }
+    }
+  }
+}
+

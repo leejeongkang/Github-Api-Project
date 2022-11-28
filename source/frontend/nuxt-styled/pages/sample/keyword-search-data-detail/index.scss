@@ -1,0 +1,612 @@
+.contents__product-information {
+  padding: $spacing-md 0;
+  margin-bottom: $spacing-xl;
+  border-top: 1px solid $text-02;
+  border-bottom: 1px solid $text-02;
+}
+
+.contents__formbox-title {
+  @include text-overflow();
+  @include font-weight("medium");
+  @include font-size("18");
+  margin-bottom: $spacing-xs;
+}
+
+// formbox
+.formbox {
+  position: relative;
+  margin-bottom: $spacing-xl;
+  border-top: 2px solid $text-01;
+  border-bottom: 1px solid $ui-04;
+  background: $ui-02;
+}
+
+.formbox tr {
+  height: rem(60px);
+}
+
+.formbox th,
+.formbox td {
+  line-height: 1.5;
+  padding: $spacing-xs rem(20px);
+  border-top: 1px solid $ui-04;
+  vertical-align: middle;
+}
+
+.formbox tr:first-child > th,
+.formbox tr:first-child > td {
+  border-top: none;
+}
+
+/* first row */
+.formbox th {
+  font-weight: 500;
+  text-align: left;
+}
+
+/* 상세폼 TH BG
+    ***************************************************************************/
+.formbox--bg {
+  position: relative;
+  margin-bottom: $spacing-2xl;
+  border-top: 2px solid $text-01;
+  border-bottom: 1px solid $ui-04;
+}
+
+.formbox--bg tr {
+  height: auto;
+}
+
+.formbox--bg th,
+.formbox--bg td {
+  padding: $spacing-md rem(20px);
+  border-top: 1px solid $ui-04;
+  text-align: left;
+}
+
+.formbox--bg th {
+  align-items: flex-start;
+  background-color: $ui-01;
+  font-weight: 500;
+}
+
+.formbox--bg tr:last-child th,
+.formbox--bg tr:last-child td {
+  border-bottom: none;
+}
+
+/* 화면 너비 0 ~ 930px */
+@include template-respond-to('breakpoint-lg') {
+
+  /* 상세폼 기본테이블
+        ***************************************************************************/
+  .formbox colgroup {
+    display: none;
+  }
+
+  .formbox tr {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .formbox th,
+  .formbox td {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .formbox th {
+    padding-top: rem(18px);
+    padding-bottom: $spacing-2xs;
+    border-top: 1px solid $ui-04 !important;
+  }
+
+  .formbox td {
+    padding-top: $spacing-2xs;
+    padding-bottom: $spacing-md;
+    border-top: none;
+  }
+
+  .formbox td[colspan] {
+    border-top: 1px solid $ui-04;
+  }
+
+  /* colspan시 border보이게(th없음) */
+
+  /* 상세폼 TH BG 테이블
+        ***************************************************************************/
+  .formbox--bg tr {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: $ui-01;
+  }
+
+  .formbox--bg th {
+    @include font-size("14");
+    width: rem(150px);
+    font-weight: 500;
+    color: $text-01;
+  }
+
+  .formbox--bg th:before {
+    content: none;
+  }
+
+  .formbox--bg th,
+  .formbox--bg td {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md rem(20px) !important;
+  }
+
+  .formbox--bg td {
+    width: calc(100% - 150px);
+    border-top: 1px solid $ui-04;
+    background-color: $ui-02;
+  }
+
+  .formbox--bg tr:first-child > th {
+    border-top: 1px solid $ui-04;
+  }
+
+  .formbox--bg tr:first-child > td {
+    border-top: 1px solid $ui-04;
+  }
+
+}
+
+// data-box
+.data-box-list {
+  width: 100%;
+  padding: $spacing-lg 0;
+}
+
+.data-box {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: $spacing-md + $spacing-2xs;
+  border-radius: $button-border-radius;
+
+  & + & {
+    margin-top: $spacing-md;
+    border-top: rem(1px) solid $ui-03;
+  }
+}
+
+.data-box__inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.data-options {
+  display: flex;
+  align-items: center;
+  z-index: z('float');
+  position: absolute;
+  top: $spacing-md + $spacing-2xs;
+  right: $spacing-md + $spacing-2xs;
+
+  > * + * {
+    margin-left: $spacing-2xs !important;
+  }
+}
+
+.data-options__tooltip {
+  position: relative;
+
+  .tooltip-studio {
+    top: calc(100% + 12px);
+    right: -6px;
+  }
+}
+
+.data-box__visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: $spacing-lg;
+
+  .svg-icon {
+    width: rem(70px);
+    height: rem(70px);
+    fill: $primary;
+  }
+}
+
+.data-box__label {
+  @include text-overflow(100%);
+  @include font-size("16");
+  color: $primary;
+}
+
+.data-box__information {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-box__link {
+  display: flex;
+  width: 100%;
+}
+
+.data-box__top-content {
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-left: $spacing-xs;
+  }
+}
+
+.data-box__content {
+  margin: $spacing-sm 0;
+}
+
+.data-box__title {
+  @include multi-text-overflow(24px, 2);
+  @include font-weight("medium");
+  @include font-size("18");
+  color: $text-01;
+}
+
+.data-box__description {
+  @include multi-text-overflow(18px, 2);
+  @include font-size("14");
+  margin-top: $spacing-xs;
+  color: $text-02;
+}
+
+.data-box__bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.data-box__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  dl {
+    display: flex;
+    align-items: center;
+
+  }
+
+  dt {
+    @include font-size("12");
+    display: flex;
+    padding-left: $spacing-md;
+    align-items: center;
+    white-space: nowrap;
+    color: $text-03;
+
+    .svg-icon {
+      margin-right: $spacing-3xs;
+    }
+
+    &:first-child {
+      padding: 0;
+    }
+  }
+
+  dd {
+    @include font-size("12");
+    position: relative;
+    padding-left: $spacing-xs;
+    margin-left: $spacing-xs;
+    white-space: nowrap;
+    color: $text-03;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: rem(1px);
+      height: rem(10px);
+      margin-top: rem(-5px);
+      background: $text-03;
+    }
+  }
+}
+
+.data-box__details-group {
+  display: flex;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+
+  .tag, .tag__label {
+    @include text-overflow();
+  }
+
+  .tag + .tag {
+    margin-left: $spacing-2xs;
+  }
+}
+
+.company-group {
+  display: flex;
+  align-items: center;
+}
+
+.company-group__icon.svg-icon {
+  fill: $text-01;
+}
+
+.company-group__text {
+  margin-left: $spacing-2xs;
+  color: $text-01;
+}
+
+.data-box__keyword {
+  display: none;
+}
+
+// 카드형 UI
+.data-box-list.data-box-list--card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: -26px;
+  margin-bottom: 0;
+
+  .data-box {
+    width: calc(33.33% - 26px);
+    height: rem(300px);
+    margin: 0 0 20px 26px;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid $ui-03;
+  }
+
+  .data-box__top-content {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .company-group {
+      margin: $spacing-2xs 0 0 0;
+    }
+  }
+
+  .data-box__bottom-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .data-box__details {
+    align-items: center;
+  }
+
+  .data-box__details-group {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: $spacing-2xs;
+
+    dt {
+      padding: 0;
+    }
+
+    dd {
+      padding-left: $spacing-2xs;
+      margin: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+
+    .dl--hidden {
+      display: none;
+    }
+  }
+
+  .data-options {
+    top: $spacing-md;
+    right: $spacing-md;
+
+    .badge {
+      display: none;
+    }
+  }
+
+  .data-box__keyword {
+    display: block;
+    padding: $spacing-sm 0;
+    margin: 0 auto;
+  }
+}
+
+// subject
+.subject .subject__wrap {
+  width: rem(1210px);
+  margin: 0 auto;
+}
+
+.subject__wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-xl $spacing-sm;
+}
+
+.subject__title-wrap {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subject__title {
+  height: rem(32px);
+  color: #333;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: $spacing-md;
+}
+
+.subject__desc {
+  display: block;
+  @include font-size("16");
+  color: $text-02;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.subject__menu-img-box {
+  margin: rem(-5px) $spacing-xl 0 $spacing-md;
+}
+
+.subject__menu-img-box .svg-icon {
+  width: 100%;
+  height: 100%;
+  fill: $primary;
+}
+
+.subject__menu-img-box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.subject__menu {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+/* subject > 부수설명UL */
+.subject__list {
+  margin: $spacing-md 0 0 0;
+}
+
+.subject__list-item {
+  @include font-size("13");
+  position: relative;
+  line-height: 1.6;
+  padding-left: $spacing-sm;
+  color: $text-03;
+}
+
+.subject__list-item:before {
+  content: "*";
+  position: absolute;
+  top: $spacing-3xs;
+  left: 0;
+}
+
+// breakpoints
+@include template-respond-to('breakpoint-xl') {
+  .data-box-list.data-box-list--card {
+    .data-box {
+      width: calc(50% - 26px);
+    }
+  }
+}
+
+@include template-respond-to('breakpoint-lg') {
+
+  .data-box__item {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .data-transaction {
+      margin: 0;
+      padding: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  .data-box__bottom-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .data-box__transaction {
+    width: 100%;
+    margin-top: $spacing-md;
+  }
+
+  .data-box__details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .data-box-list.data-box-list--card {
+    .data-box__details {
+      flex-direction: row;
+    }
+  }
+
+  .subject .subject__wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding: rem(22px) rem(20px) $spacing-md rem(20px);
+  }
+
+  .subject__menu-img-box {
+    display: none;
+  }
+
+  .subject__title-wrap {
+    width: 100%;
+  }
+
+  .subject__sub-group {
+    position: relative;
+    margin-top: $spacing-md;
+    bottom: unset;
+    right: unset;
+    height: unset;
+    align-items: flex-end;
+  }
+
+  .subject__sub-group>button:only-child {
+    position: relative;
+    top: unset;
+    min-width: rem(200px);
+  }
+
+  .subject__list-item {
+    justify-content: center;
+  }
+}
+
+@include template-respond-to('breakpoint-md') {
+  .data-box-list.data-box-list--card {
+    .data-box {
+      width: calc(100% - 26px);
+    }
+  }
+}
+

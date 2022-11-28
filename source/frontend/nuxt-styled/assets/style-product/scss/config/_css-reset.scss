@@ -1,0 +1,12 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+mark {
+  background: none;
+  color: $secondary;
+}

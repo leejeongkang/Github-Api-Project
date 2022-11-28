@@ -1,0 +1,37 @@
+.easy-login__title {
+  @include text-overflow();
+  @include font-weight("medium");
+  @include font-size("16");
+  margin-bottom: $spacing-xl;
+}
+
+.easy-login__description {
+  color: $text-02;
+  text-align: center;
+}
+
+.easy-login__list {
+  width: rem(550px);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  margin: $spacing-lg auto;
+}
+
+.easy-login__item {
+
+  .button__image {
+    width: rem(20px);
+    height: rem(20px);
+
+    & + .button__text {
+      margin-left: $spacing-2xs;
+    }
+  }
+
+}
+
+.easy-login__link {
+  border: 1px solid $ui-04;
+}

@@ -1,0 +1,12 @@
+[
+  { "index": 0, "title": "정부24", "url": "http://www.gov.kr/" },
+  { "index": 1, "title": "행정안전부", "url": "http://www.odsc.go.kr/" },
+  { "index": 2, "title": "공공데이터전략위원회", "url": "http://www.odsc.go.kr/" },
+  { "index": 3, "title": "공공데이터제공분쟁조정위원회", "url": "http://www.odmc.or.kr/" },
+  { "index": 4, "title": "오픈스퀘어-D", "url": "http://www.opensquared.org/" },
+  { "index": 5, "title": "오픈데이터포럼", "url": "http://odf.or.kr/\"" },
+  { "index": 6, "title": "대한민국 정보공개", "url": "https://www.open.go.kr/" },
+  { "index": 7, "title": "공공데이터포털 블로그", "url": "https://blog.naver.com/nia_korea/" },
+  { "index": 8, "title": "공공데이터 학술정보", "url": "http://www.riss.kr/index.do" },
+  { "index": 9, "title": "KOSIS국가통계포털", "url": "https://kosis.kr" }
+]

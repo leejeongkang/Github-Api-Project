@@ -1,0 +1,55 @@
+/* breadcrumb */
+.breadcrumbs__list {
+  display: flex;
+}
+
+.breadcrumbs__item {
+  position: relative;
+  height: rem(14px);
+  line-height: rem(14px);
+  padding: 0 $spacing-xs 0 $spacing-lg;
+}
+
+.breadcrumbs__item:before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  border-top: 2px solid $icon-01;
+  border-right: 2px solid $icon-01;
+  display: inline-block;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  margin-top: -0.25rem;
+  left: 0;
+  border-radius: 2px;
+}
+
+.breadcrumbs__item--home {
+  padding-left: $spacing-lg;
+}
+
+.breadcrumbs__item--home:before {
+  background: url("../../../../assets/style-core/images/icon/home.svg") no-repeat center center;
+  transform: rotate(0);
+  background-size: 100%;
+  width: rem(14px);
+  height: rem(14px);
+  margin-top: rem(-7px);
+  border: none;
+  fill: $icon-01;
+  color: $icon-01;
+}
+
+.breadcrumbs__item span,
+.breadcrumbs__item--home span {
+  color: $text-03;
+}
+
+@include template-respond-to('breakpoint-lg') {
+  .breadcrumbs {
+    display: none;
+  }
+}
+

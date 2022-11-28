@@ -1,0 +1,48 @@
+// -------------------------
+// theme별 mixin color (fill 스타일이 적용이 안되고 있음)
+// -------------------------
+@mixin badge-theme-color($icon-color) {
+  .badge__icon {
+    color: $icon-color;
+  }
+}
+
+.badge--red {
+  @include badge-theme-color(#da1e28);
+}
+
+.badge--red-deep {
+  @include badge-theme-color($text-04);
+}
+
+.badge--cyan {
+  @include badge-theme-color(#0089c9);
+}
+
+.badge--cyan-deep {
+  @include badge-theme-color($text-04);
+}
+
+.badge--green {
+  @include badge-theme-color(#198038);
+}
+
+.badge--green-deep {
+  @include badge-theme-color($text-04);
+}
+
+.badge--teal {
+  @include badge-theme-color(#007d79);
+}
+
+.badge--teal-deep {
+  @include badge-theme-color($text-04);
+}
+
+.badge--purple {
+  @include badge-theme-color(#6929c4);
+}
+
+.badge--purple-deep {
+  @include badge-theme-color($text-04);
+}

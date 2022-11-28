@@ -1,0 +1,20 @@
+{
+  "ko": {
+    "nav": {
+      "link-image": "이미지 샘플",
+      "search-image": "검색 샘플",
+      "search-list": "검색 결과 목록 샘플",
+      "ui-template": "ui-template",
+      "link-logout": "로그아웃"
+    }
+  },
+  "en": {
+    "nav": {
+      "link-image": "Image Sample",
+      "search-image": "Search Sample",
+      "search-list": "Search Result List Sample",
+      "ui-template": "ui-template",
+      "link-logout": "Logout"
+    }
+  }
+}

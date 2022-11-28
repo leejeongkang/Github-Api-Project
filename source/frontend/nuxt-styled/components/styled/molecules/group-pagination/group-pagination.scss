@@ -1,0 +1,92 @@
+
+/* pagination more :주로 Mobile용이나 PC에도 혼합 */
+.pagination-more {
+  width: 100%;
+  height: 36px;
+  margin: 0 auto 20px;
+  text-align: center;
+  font-size: 0;
+}
+
+.pagination-more * {
+  font-size: 14px;
+}
+
+.pagination-more__button {
+  min-width: 30px;
+  height: 40px;
+  line-height: 100%;
+  padding: 0 15px;
+  border: 1px solid #b2b8c6;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.pagination-more__button:hover .pagination-more__paging {
+  color: #333;
+}
+
+.pagination-more__paging {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 400;
+}
+
+.pagination-more__paging * {
+  display: inline-block;
+}
+
+.pagination-more__paging .pagination-more__text-accent {
+  margin-left: 4px;
+}
+
+.pagination-more__button--bg-none {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.pagination-more__button--bg-none:hover span,
+.pagination-more__button--bg-none:hover:active {
+  color: #333333;
+}
+
+.pagination-more__button[disabled] .pagination-more__paging em {
+  color: #1759dd;
+  opacity: 0.5;
+}
+
+.pagination-more__icon {
+  margin: 0;
+}
+
+.pagination-more__text-accent {
+  color: #1759dd;
+  font-weight: 500;
+}
+
+.pagination__total-num {
+  color: #909090;
+}
+
+/* 공통 기존방식
+    .pagination + .pagination-more {display:none;}/* 일반페이징과 더보기가 같이 있을때 모바일에서는 더보기만 보임 */
+
+/* only Mobile */
+.mobile-only {
+  display: none !important;
+}
+
+
+ @include template-respond-to('breakpoint-md') {
+   /* only PC */
+   .pc-only {
+     display: none !important;
+   }
+
+   /* only Mobile */
+   .mobile-only {
+     display: block !important;
+   }
+ }

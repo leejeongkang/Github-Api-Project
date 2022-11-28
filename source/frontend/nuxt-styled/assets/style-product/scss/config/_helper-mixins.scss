@@ -1,0 +1,5 @@
+@mixin fontawesome-icon-color($icon-color) {
+  .svg-icon {
+    color: $icon-color;
+  }
+}

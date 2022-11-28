@@ -1,0 +1,10 @@
+.table-box .table{
+  min-width: rem(1280px);
+}
+
+/* 화면 너비 0 ~ 930px */
+@include template-respond-to('breakpoint-lg') {
+  .table-box {
+    overflow-x: auto;
+  }
+}

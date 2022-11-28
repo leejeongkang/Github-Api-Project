@@ -1,0 +1,41 @@
+//-------------------------------------------
+//  Template용 미디어쿼리
+//  분기 구간 기준: 1200px / 1024px / 768px / 480px / 360px
+// ------------------------------------------
+$template-breakpoints: (
+  "breakpoint-xl": (
+    max-width: rem(1280px)
+  ),
+  "breakpoint-lg": (
+    max-width: rem(1024px)
+  ),
+  "breakpoint-md": (
+    max-width: rem(768px)
+  ),
+  "breakpoint-sm": (
+    max-width: rem(480px)
+  ),
+  "breakpoint-xs": (
+    max-width: rem(360px)
+  )
+) !default;
+
+@mixin template-respond-to($breakpoint) {
+  @if map-has-key($template-breakpoints, $breakpoint) {
+    @media #{inspect(map-get($template-breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($template-breakpoints)}.";
+  }
+}
+
+// Usage
+// .selector {
+//   color: red;
+
+//   @include template-respond-to('breakpoint-lg') {
+//     color: blue;
+//   }
+// }

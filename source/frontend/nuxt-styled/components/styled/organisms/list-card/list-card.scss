@@ -1,0 +1,28 @@
+.card-wrap ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$spacing-md;
+}
+
+.card-wrap ul .card-group {
+  width: calc(33.33% - 16px);
+  height: rem(412px);
+  margin: 0 0 $spacing-md+$spacing-2xs $spacing-md;
+}
+
+.card-wrap ul .card-group:hover {
+  border-color: #3375d7;
+  cursor: pointer;
+}
+
+@include template-respond-to('breakpoint-lg') {
+  .card-wrap ul .card-group {
+    width: calc(50% - 16px);
+  }
+}
+
+   @include template-respond-to('breakpoint-sm') {
+     .card-wrap ul .card-group {
+       width: calc(100% - 16px);
+     }
+   }

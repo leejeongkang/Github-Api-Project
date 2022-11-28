@@ -1,0 +1,100 @@
+.card-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $ui-04;
+  background-color: $ui-02;
+}
+
+.card-group__link {
+  display: block;
+  overflow: hidden;
+}
+
+.card-group__badge {
+  z-index: z('float') + 1;
+  position: absolute;
+  top: rem(-1px);
+  left: rem(-1px);
+  display: flex;
+  align-items: center;
+  height: rem(30px);
+  padding: 0 rem(15px);
+  background: $ui-03;
+}
+
+.card-group__badge .badge {
+  margin-right: $spacing-xs;
+}
+
+.card-group__badge em {
+  @include font-size("14");
+  color: $ui-02;
+}
+
+.card-group__image {
+  @include text-overflow(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(180px);
+  margin: 0 auto;
+  border-bottom: 1px solid $ui-04;
+}
+
+.card-group__image img {
+  overflow: hidden;
+  height: inherit;
+}
+
+.card-group__data {
+  padding: $spacing-sm $spacing-md;
+}
+
+.card-group__title {
+  @include multi-text-overflow(24px, 2);
+  @include font-size("18");
+  margin-bottom: rem(10px);
+  font-weight: 600;
+}
+
+.card-group__desc {
+  @include multi-text-overflow(17px, 2);
+  padding: 0;
+  color: $text-02;
+}
+
+.card-group .data-info {
+  margin-top: $spacing-sm;
+}
+
+.card-group__service {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding: 0 $spacing-md $spacing-sm;
+}
+
+.card-group__service .badge {
+  margin-bottom: $spacing-2xs + $spacing-3xs;
+}
+
+.service-link {
+  @include multi-text-overflow(16px, 2);
+  @include font-size("13");
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0 $spacing-md 0 0;
+  letter-spacing: -0.3px;
+  color: $primary;
+}
+
+.service-link__icon {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% - 14px);
+}
+

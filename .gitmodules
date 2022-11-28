@@ -1,0 +1,4 @@
+[submodule "source/frontend/nuxt-styled/assets/style-core"]
+	path = source/frontend/nuxt-styled/assets/style-core
+	url = https://github.com/mobigen/IRIS-Design-Core.git
+	branch = dev

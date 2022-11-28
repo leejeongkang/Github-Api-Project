@@ -1,0 +1,12 @@
+{
+  "ko": {
+    "index": {
+      "hello": "안녕하세요!! 샘플페이지 입니다."
+    }
+  },
+  "en": {
+    "index": {
+      "hello": "Hello!! This is Sample"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+// -------------------------
+// Button
+// -------------------------
+.button-group {
+  position: relative;
+  justify-content: center;
+}
+
+.button-group button+button {
+  margin-left: 10px;
+}
+
+.button--right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.button--left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+// -------------------------
+// Button 폰트 어썸 아이콘 컬러 적용
+// -------------------------
+.button--tertiary {
+  @include fontawesome-icon-color($text-02);
+}
+
+.button--primary {
+  @include fontawesome-icon-color($text-04);
+}
+
+.button--secondary {
+  @include fontawesome-icon-color($text-04);
+}
+
+.button--link {
+  @include fontawesome-icon-color($text-02);
+
+  &:hover:not(:disabled) {
+    .svg-icon {
+      color: $text-03;
+    }
+  }
+
+  &:active {
+    .svg-icon {
+      color: darken($text-02, 0.25);
+    }
+  }
+}
+
+.button--support {
+  @include fontawesome-icon-color($primary);
+  &:hover:not(:disabled) {
+    .svg-icon {
+      color: $primary;
+    }
+  }
+}
+
+.button--danger {
+  @include fontawesome-icon-color($negative);
+  &:hover:not(:disabled) {
+    .svg-icon {
+      color: $text-04;
+    }
+  }
+}
+
+.button--negative {
+  @include fontawesome-icon-color($text-04);
+}
+
+.button--underline {
+  @include fontawesome-icon-color($text-02);
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    .svg-icon {
+      color: $text-03;
+    }
+  }
+
+  &:active {
+    .svg-icon {
+      color: darken($text-02, 0.25);
+    }
+  }
+}
+
+.button--underline-support {
+  @include fontawesome-icon-color($primary);
+  &:hover:not(:disabled) {
+    .svg-icon {
+      color: $hover-primary;
+    }
+  }
+
+  &:active {
+    .svg-icon {
+      color: darken($primary, 0.25);
+    }
+  }
+}
+
+.button--underline-negative {
+  @include fontawesome-icon-color($negative);
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    .svg-icon {
+      color: $hover-negative;
+    }
+  }
+
+  &:active {
+    .svg-icon {
+      color: darken($negative, 0.25);
+    }
+  }
+}

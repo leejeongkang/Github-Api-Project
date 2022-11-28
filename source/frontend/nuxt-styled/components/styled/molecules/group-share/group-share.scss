@@ -1,0 +1,119 @@
+.share-sns {
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-left: $spacing-2xs;
+  }
+}
+
+.share-sns__button{
+  height: rem(25px);
+  background: $ui-02;
+  border: 1px solid $ui-04;
+}
+
+.share-sns__button--url {
+  @include font-size("12");
+  padding: 0 $spacing-md;
+  border-radius: rem(13px);
+  color: $text-02;
+
+  &:hover:not(:disabled) {
+    border-color: $secondary;
+  }
+
+  &:active {
+    border-color: $secondary;
+    color: $secondary;
+  }
+}
+
+.share-sns__button--share {
+  position: relative;
+  width: rem(25px);
+  padding: 0;
+  border-radius: 50%;
+
+  .svg-icon {
+    width: rem(16px);
+    height: rem(16px);
+    margin-right: rem(2px);
+  }
+
+  &:hover {
+    border-color: $secondary;
+  }
+}
+
+.share-sns__button--open {
+  border-color: $secondary;
+
+  .svg-icon {
+    fill: $secondary;
+  }
+
+  .share-sns__tooltip {
+    display: block;
+  }
+}
+
+.share-sns__tooltip {
+  z-index: z('float');
+  position: absolute;
+  top: rem(26px);
+  left: rem(-3px);
+  width: rem(100px);
+  padding: rem(6px) $spacing-sm;
+  border: 1px solid $ui-04;
+  border-radius: rem(5px);
+  background: $ui-02;
+  display: none;
+
+  li {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.share-sns__item {
+  @include font-size("12");
+  position: relative;
+  width: 100%;
+  height: rem(22px);
+  padding-left: rem(20px);
+  line-height: rem(22px);
+  text-align: left;
+  display: block;
+
+  &:hover {
+    color: $secondary;
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+    top: rem(3px);
+    left: 0;
+    width: rem(16px);
+    height: rem(16px);
+    border-radius: rem(3px);
+    //background: $ui-01 url(#{$img-path}/common/icon.png) no-repeat rem(-11px) rem(-251px);
+    border: 1px solid $ui-04;
+    box-sizing: border-box;
+  }
+}
+
+.kakao::before {
+  background: url(#{$img-path}/common/share_kakao.png) no-repeat;
+  background-size: 100%;
+  border: none;
+}
+
+.cafe::before {
+  background: url(#{$img-path}/common/share_cafe.png) no-repeat;
+  background-size: 100%;
+  border: none;
+}
+
+

@@ -1,0 +1,13 @@
+/* 미디어 쿼리 예시 */
+@include template-respond-to('breakpoint-md') {
+  .button-group .button--left {
+    position: static;
+    left: unset;
+  }
+
+  .button-group .button--right {
+    position: static;
+    right: unset;
+  }
+
+}

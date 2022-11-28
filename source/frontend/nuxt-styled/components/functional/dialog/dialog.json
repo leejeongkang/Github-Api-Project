@@ -1,0 +1,14 @@
+{
+  "ko": {
+    "dialog": {
+      "confirm": "확인",
+      "cancel": "취소"
+    }
+  },
+  "en": {
+    "dialog": {
+      "confirm": "Ok",
+      "cancel": "Cancel"
+    }
+  }
+}

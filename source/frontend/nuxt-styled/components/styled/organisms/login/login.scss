@@ -1,0 +1,10 @@
+.login-form {
+  @include layer("pop-out");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  width: rem(400px);
+  background-color: $ui-02;
+  padding: $spacing-3xl $spacing-xl;
+}

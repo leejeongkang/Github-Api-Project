@@ -1,0 +1,227 @@
+.formbox {
+  position: relative;
+  margin-bottom: $spacing-xl;
+  border-top: 2px solid $text-01;
+  border-bottom: 1px solid $ui-04;
+  background: $ui-02;
+
+  caption {
+    display: none;
+  }
+
+  tr {
+    height: rem(60px);
+  }
+
+  th, td {
+    line-height: 1.5;
+    padding: $spacing-xs rem(20px);
+    border-top: 1px solid $ui-03;
+    vertical-align: middle;
+  }
+
+  tr:first-child th,
+  tr:first-child td {
+    border-bottom: 1px solid $text-01;
+  }
+
+  th {
+    font-weight: 500;
+    text-align: left;
+  }
+
+  th.pc-only {
+    display: table-cell;
+  }
+
+  tr:first-child td {
+    position: relative;
+    color: $text-03;
+  }
+
+  tr:first-child td:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 22px;
+    width: 1px;
+    height: 14px;
+    background: $ui-04;
+  }
+}
+
+/* 상세페이지 폼타입 - 상단 */
+.board-view__head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 $spacing-md;
+}
+
+.board-view__title {
+  line-height: 1;
+  font-size: rem(18px);
+  font-weight: 500;
+}
+
+.board-view__desc {
+  display: flex;
+  margin-top: $spacing-xs;
+}
+
+/* M에서 변경됨 */
+.board-view__desc.inner-mobile {
+  display: none;
+}
+
+.board-view__content,
+.board-view__cmt {
+  line-height: 1.5;
+  padding: rem(10px) 0;
+}
+
+.badge {
+  display: inline-grid;
+}
+
+
+/* 답변용 */
+.board-view__reply {
+  th,
+  td {
+    padding-top: rem(20px);
+    padding-bottom: rem(20px);
+    border-top-color: $ui-04 !important;
+  }
+
+  th {
+    vertical-align: top;
+  }
+
+  th:before {
+    content: "";
+    display: inline-block;
+    width: $spacing-lg;
+    height: $spacing-lg;
+    vertical-align: middle;
+    background-image: url("data:image/svg+xml,%3Csvg data-name='icon / reply' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath data-name='Rectangle 731' style='fill:none' d='M0 0h24v24H0z'/%3E%3Cpath data-name='Path 17072' d='m15.214 14.771-9.212-.072a3 3 0 0 1-3-3v-11.7h2v11.7a1 1 0 0 0 1 1l9.212.072v-2.447L21 13.795l-5.786 3.471z'/%3E%3C/svg%3E");
+  }
+}
+
+.data-info {
+  dl {
+    margin: 0;
+  }
+
+  dl dd {
+    padding: 0;
+    margin-left: 0;
+  }
+
+  /* dt hidden */
+  dl dd:before,
+  dl dd.mobile-show:after {
+    display: none;
+  }
+}
+
+.board-view__file-list a {
+  display: inline-block;
+  line-height: 1.3;
+  margin: rem(6px) 0;
+  color: $primary;
+}
+
+/* 화면 너비 0 ~ 930px */
+@include template-respond-to('breakpoint-lg') {
+  /* only PC */
+  .pc-only {
+    display: none !important;
+  }
+
+  .board-view__head {
+    padding: $spacing-sm 0 $spacing-md 0;
+  }
+
+  .board-view__head.mobile-show {
+    padding-top: $spacing-xl;
+  }
+
+  /* 데이터드림용 board-head board-desc 분기점 */
+  .mobile-show .board-view__desc {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .mobile-show .inner-mobile > * + * {
+    margin-left: $spacing-xs;
+  }
+
+  .data-info dl dd {
+    margin: 0 0 0 rem(10px);
+    padding: 0 0 0 rem(10px);
+  }
+
+  .data-info dd:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: rem(1px);
+    height: rem(13px);
+    margin-top: rem(-7px);
+    background: $ui-04;
+  }
+
+  /* 상세폼 기본테이블 */
+  .formbox {
+    colgroup {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+    }
+
+    th,
+    td {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    th {
+      padding-top: 18px;
+      padding-bottom: $spacing-2xs;
+      border-top: 1px solid $ui-04;
+    }
+
+    td {
+      padding-top: $spacing-2xs;
+      padding-bottom: $spacing-md;
+      border-top: none;
+    }
+
+    .data-info dd {
+      position: absolute;
+      top: rem(-28px);
+      left: rem(50px);
+    }
+
+    /* 파일첨부 */
+    td.border-view__file {
+      padding-bottom: $spacing-2xs;
+    }
+
+    .board-view__reply td {
+      padding-top: 0;
+    }
+  }
+}

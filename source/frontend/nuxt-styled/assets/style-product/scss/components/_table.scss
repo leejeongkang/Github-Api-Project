@@ -1,0 +1,60 @@
+.table--vertical {
+  position: relative;
+  border-top: 2px solid $text-01;
+  border-bottom: 1px solid $ui-04;
+}
+
+.table--vertical tr {
+  &:hover{
+    td{
+      background-color: $ui-02;
+    }
+  }
+}
+
+.table--vertical th,
+.table--vertical td {
+  height: auto;
+  padding: $spacing-md rem(20px);
+  border-top: 1px solid $ui-04;
+  text-align: left;
+}
+
+.table--vertical th {
+  @include font-weight("medium");
+  background-color: $ui-01;
+}
+
+.table--vertical tr:last-child th,
+.table--vertical tr:last-child td {
+  border-bottom: none;
+}
+
+/* 화면 너비 0 ~ 930px */
+@include template-respond-to('breakpoint-lg') {
+  .table colgroup {
+    display: none;
+  }
+
+  .table--vertical tr {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .table--vertical th {
+    width: rem(150px);
+  }
+
+  .table--vertical td {
+    width: calc(100% - 150px);
+  }
+
+  .table--vertical th,
+  .table--vertical td {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md rem(20px);
+  }
+}
