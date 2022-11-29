@@ -65,4 +65,11 @@ public class RepoService {
         return getName(result).size();
     }
 
+    public Integer branchCnt(String repo) {
+        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/branches?state=all",
+                null, githubApiToken.accessToken());
+
+        return getName(result).size();
+    }
+
 }
