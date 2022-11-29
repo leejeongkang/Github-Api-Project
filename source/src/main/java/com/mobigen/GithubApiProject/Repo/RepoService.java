@@ -92,4 +92,30 @@ public class RepoService {
 
         return getName(result).size();
     }
+
+    public Integer commitCntByDate(String repo, String datePick) {
+        HashMap<String, String> dateMap = getDate(datePick);
+
+        JsonResult result =
+                this.restAPI.get("https://api.github.com/repos" + owner + "/" + repo + "/commits?state=all",
+                        dateMap, githubApiToken.accessToken());
+
+        return getName(result).size();
+    }
+    private HashMap<String, String> getDate(String datePick) {
+        Date date = new Date();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR, 23);
+        calendar.add(Calendar.MINUTE, 59);
+        calendar.add(Calendar.SECOND, 59);
+        String untilDate = datePick + calendar;
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("since", datePick);
+        map.put("until", untilDate);
+
+        return map;
+    }
 }
