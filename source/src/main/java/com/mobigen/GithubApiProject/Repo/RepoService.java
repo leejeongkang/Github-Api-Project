@@ -43,4 +43,14 @@ public class RepoService {
 
         return getName(result);
     }
+
+    public Integer commitCnt(String repo) {
+        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/commits?per_page=100",
+                null, githubApiToken.accessToken());
+
+        return getName(result).size();
+    }
+
+
+
 }
