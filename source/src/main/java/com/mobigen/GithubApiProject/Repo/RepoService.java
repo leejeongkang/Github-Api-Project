@@ -72,4 +72,14 @@ public class RepoService {
         return getName(result).size();
     }
 
+    public Integer commitCntByUser(String repo, String user) {
+        HashMap<String, String> userMap = new HashMap<>();
+        userMap.put("author", user);
+
+        JsonResult result =
+                this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/commits?state=all",
+                        userMap, githubApiToken.accessToken());
+
+        return getName(result).size();
+    }
 }
