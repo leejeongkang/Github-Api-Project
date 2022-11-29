@@ -51,6 +51,10 @@ public class RepoService {
         return getName(result).size();
     }
 
+    public Integer prCnt(String repo) {
+        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/pulls?state=all&per_page=100",
+                null, githubApiToken.accessToken());
 
-
+        return getName(result).size();
+    }
 }
