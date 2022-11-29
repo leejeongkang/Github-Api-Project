@@ -57,4 +57,12 @@ public class RepoService {
 
         return getName(result).size();
     }
+
+    public Integer userCnt(String repo) {
+        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/contributors?state=all",
+                null, githubApiToken.accessToken());
+
+        return getName(result).size();
+    }
+
 }
