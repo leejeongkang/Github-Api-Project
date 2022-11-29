@@ -102,6 +102,17 @@ public class RepoService {
 
         return getName(result).size();
     }
+
+    public Integer prCntByDate(String repo, String datePick) {
+        HashMap<String, String> dateMap = getDate(datePick);
+
+        JsonResult result =
+                this.restAPI.get("https://api.github.com/repos" + owner + "/" + repo + "/pulls?state=all",
+                        dateMap, githubApiToken.accessToken());
+
+        return getName(result).size();
+    }
+
     private HashMap<String, String> getDate(String datePick) {
         Date date = new Date();
 
