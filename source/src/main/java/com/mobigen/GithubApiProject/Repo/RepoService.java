@@ -16,13 +16,12 @@ public class RepoService {
     private final GithubApiToken githubApiToken;
     final String owner = "mobigen";
 
-    private ArrayList<HashMap<String, Object>> getName(JsonResult result) {
-        ArrayList<LinkedHashMap<String, Object>> arrayList =
-                (ArrayList<LinkedHashMap<String, Object>>) result.getData();
+    private List<HashMap<String, Object>> getName (JsonResult result) {
+        List<HashMap<String, Object>> list = (List<HashMap<String, Object>>) result.getData();
 
-        ArrayList<HashMap<String, Object>> nameList = new ArrayList<>();
+        List<HashMap<String, Object>> nameList = new ArrayList<>();
 
-        for (LinkedHashMap<String, Object> item : arrayList) {
+        for (HashMap<String, Object> item : list) {
             HashMap<String, Object> nameMap = new HashMap<>();
             nameMap.put("name", item.get("name"));
             nameList.add(nameMap);
