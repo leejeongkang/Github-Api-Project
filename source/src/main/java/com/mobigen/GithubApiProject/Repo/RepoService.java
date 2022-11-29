@@ -36,4 +36,11 @@ public class RepoService {
 
         return getName(result);
     }
+
+    public Object branchList(String repo) {
+        JsonResult result = this.restAPI.get("https://api.github.com/repos" + owner + "/" + repo + "/branches",
+                null, githubApiToken.accessToken());
+
+        return getName(result);
+    }
 }
