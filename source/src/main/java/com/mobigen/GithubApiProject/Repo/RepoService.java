@@ -24,6 +24,7 @@ public class RepoService {
         for (Map<String, Object> item : list) {
             Map<String, Object> nameMap = new HashMap<>();
             nameMap.put("name", item.get("name"));
+            nameMap.put("id", item.get("id"));
             nameList.add(nameMap);
         }
         return nameList;
