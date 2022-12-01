@@ -129,9 +129,8 @@ public class RepoService {
 
     private Map<String, String> getDate(String datePick) {
 
-        Date date = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
+        calendar.setTime(new Date());
         calendar.add(Calendar.HOUR, 23);
         calendar.add(Calendar.MINUTE, 59);
         calendar.add(Calendar.SECOND, 59);
