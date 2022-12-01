@@ -14,107 +14,122 @@ public class RepoService {
 
     private final RestAPI restAPI;
     private final GithubApiToken githubApiToken;
-    final String owner = "mobigen";
+    static final String owner = "mobigen";
 
-    private List<HashMap<String, Object>> getName (JsonResult result) {
-        List<HashMap<String, Object>> list = (List<HashMap<String, Object>>) result.getData();
+    private List<Map<String, Object>> getName (JsonResult result) {
+        List<Map<String, Object>> list = (List<Map<String, Object>>) result.getData();
 
-        List<HashMap<String, Object>> nameList = new ArrayList<>();
+        List<Map<String, Object>> nameList = new ArrayList<>();
 
-        for (HashMap<String, Object> item : list) {
-            HashMap<String, Object> nameMap = new HashMap<>();
+        for (Map<String, Object> item : list) {
+            Map<String, Object> nameMap = new HashMap<>();
             nameMap.put("name", item.get("name"));
             nameList.add(nameMap);
         }
         return nameList;
     }
+    private String getURL(String repo, String key) {
+
+        final String githubURL = "https://api.github.com/repos/" + owner + "/" + repo;
+
+        final String repoListURL = "https://api.github.com/orgs/" + owner + "/repos";
+        final String branchListURL = githubURL + "/branches";
+        final String commitCountURL = githubURL + "/commits?per_page=100";
+        final String prCountURL = githubURL + "/pulls?state=all&per_page=100";
+        final String userCountURL = githubURL + "/contributors?state=all";
+        final String branchCountURL = githubURL + "/branches?state=all";
+        final String commitCountByUserURL = githubURL + "/commits?state=all";
+        final String prCountByUserURL = githubURL +"/pulls?state=all";
+        final String commitCountByDateURL = githubURL + "/commits?state=all";
+        final String prCountByDateURL = githubURL + "/pulls?state=all";
+
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("repoListURL", repoListURL);
+        stringMap.put("branchListURL", branchListURL);
+        stringMap.put("commitCountURL", commitCountURL);
+        stringMap.put("prCountURL", prCountURL);
+        stringMap.put("userCountURL", userCountURL);
+        stringMap.put("branchCountURL", branchCountURL);
+        stringMap.put("commitCountByUserURL", commitCountByUserURL);
+        stringMap.put("prCountByUserURL", prCountByUserURL);
+        stringMap.put("commitCountByDateURL", commitCountByDateURL);
+        stringMap.put("prCountByDateURL", prCountByDateURL);
+
+        return stringMap.get(key);
+    }
 
     public Object repoList() {
-        JsonResult result = this.restAPI.get("https://api.github.com/orgs/"+ owner + "/repos",
-                null, githubApiToken.accessToken());
+        JsonResult result = this.restAPI.get(getURL(null,"repoListURL"),null, githubApiToken.accessToken());
 
         return getName(result);
     }
 
     public Object branchList(String repo) {
-        JsonResult result = this.restAPI.get("https://api.github.com/repos" + owner + "/" + repo + "/branches",
-                null, githubApiToken.accessToken());
+        JsonResult result = this.restAPI.get(getURL(repo,"branchListURL"),null, githubApiToken.accessToken());
 
         return getName(result);
     }
 
-    public Integer commitCnt(String repo) {
-        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/commits?per_page=100",
-                null, githubApiToken.accessToken());
+    public Integer commitCount(String repo) {
+        JsonResult result = this.restAPI.get(getURL(repo,"commitCountURL"),null, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    public Integer prCnt(String repo) {
-        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/pulls?state=all&per_page=100",
-                null, githubApiToken.accessToken());
+    public Integer prCount(String repo) {
+        JsonResult result = this.restAPI.get(getURL(repo,"prCountURL"),null, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    public Integer userCnt(String repo) {
-        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/contributors?state=all",
-                null, githubApiToken.accessToken());
+    public Integer userCount(String repo) {
+        JsonResult result = this.restAPI.get(getURL(repo,"userCount"),null, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    public Integer branchCnt(String repo) {
-        JsonResult result = this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/branches?state=all",
-                null, githubApiToken.accessToken());
+    public Integer branchCount(String repo) {
+        JsonResult result = this.restAPI.get(getURL(repo,"branchCount"),null, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    public Integer commitCntByUser(String repo, String user) {
-        HashMap<String, String> userMap = new HashMap<>();
+    public Integer commitCountByUser(String repo, String user) {
+        Map<String, String> userMap =  new HashMap<>();
         userMap.put("author", user);
 
-        JsonResult result =
-                this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo + "/commits?state=all",
-                        userMap, githubApiToken.accessToken());
+        JsonResult result = this.restAPI.get(getURL(repo,"commitCountByUserURL"), userMap, githubApiToken.accessToken());
 
         return getName(result).size();
     }
-    public Integer prCntByUser(String repo, String user) {
-        HashMap<String, String> userMap = new HashMap<>();
+    public Integer prCountByUser(String repo, String user) {
+        Map<String, String> userMap = new HashMap<>();
         userMap.put("author", user);
 
-        JsonResult result =
-                this.restAPI.get("https://api.github.com/repos/" + owner + "/" + repo +"/pulls?state=all",
-                        userMap, githubApiToken.accessToken());
+        JsonResult result = this.restAPI.get(getURL(repo,"prCountByUser"), userMap, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    public Integer commitCntByDate(String repo, String datePick) {
-        HashMap<String, String> dateMap = getDate(datePick);
+    public Integer commitCountByDate(String repo, String datePick) {
+        Map<String, String> dateMap = getDate(datePick);
 
-        JsonResult result =
-                this.restAPI.get("https://api.github.com/repos" + owner + "/" + repo + "/commits?state=all",
-                        dateMap, githubApiToken.accessToken());
+        JsonResult result = restAPI.get(getURL(repo,"commitCountByDateURL"), dateMap, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    public Integer prCntByDate(String repo, String datePick) {
-        HashMap<String, String> dateMap = getDate(datePick);
+    public Integer prCountByDate(String repo, String datePick) {
+        Map<String, String> dateMap = getDate(datePick);
 
-        JsonResult result =
-                this.restAPI.get("https://api.github.com/repos" + owner + "/" + repo + "/pulls?state=all",
-                        dateMap, githubApiToken.accessToken());
+        JsonResult result = restAPI.get(getURL(repo, "prCountByDateURL"), dateMap, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    private HashMap<String, String> getDate(String datePick) {
+    private Map<String, String> getDate(String datePick) {
+
         Date date = new Date();
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.HOUR, 23);
@@ -122,7 +137,7 @@ public class RepoService {
         calendar.add(Calendar.SECOND, 59);
         String untilDate = datePick + calendar;
 
-        HashMap<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("since", datePick);
         map.put("until", untilDate);
 
