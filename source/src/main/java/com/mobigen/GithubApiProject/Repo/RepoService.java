@@ -18,10 +18,12 @@ public class RepoService {
     private List<Map<String, Object>> getName (JsonResult result) {
         List<Map<String, Object>> list = (List<Map<String, Object>>) result.getData();
 
+        String [] keys = { "name", "id" };
+
         for (Map<String, Object> item : list) {
             Set<String> keySet = new HashSet<String>();
             keySet.addAll(item.keySet());
-            keySet.removeAll(Arrays.asList("name", "id"));
+            keySet.removeAll(Arrays.asList(keys));
             item.keySet().removeAll(keySet);
         }
         return list;
