@@ -15,19 +15,16 @@ public class RepoService {
     private final RestAPI restAPI;
     private final GithubApiToken githubApiToken;
     static final String owner = "mobigen";
-
     private List<Map<String, Object>> getName (JsonResult result) {
         List<Map<String, Object>> list = (List<Map<String, Object>>) result.getData();
 
-        List<Map<String, Object>> nameList = new ArrayList<>();
-
         for (Map<String, Object> item : list) {
-            Map<String, Object> nameMap = new HashMap<>();
-            nameMap.put("name", item.get("name"));
-            nameMap.put("id", item.get("id"));
-            nameList.add(nameMap);
+            Set<String> keySet = new HashSet<String>();
+            keySet.addAll(item.keySet());
+            keySet.removeAll(Arrays.asList("name", "id"));
+            item.keySet().removeAll(keySet);
         }
-        return nameList;
+        return list;
     }
     private String getURL(String repo, String key) {
 
@@ -58,7 +55,6 @@ public class RepoService {
 
         return stringMap.get(key);
     }
-
     public Object repoList() {
         JsonResult result = this.restAPI.get(getURL(null,"repoListURL"),null, githubApiToken.accessToken());
 
