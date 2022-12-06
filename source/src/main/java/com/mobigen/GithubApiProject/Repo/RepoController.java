@@ -34,65 +34,61 @@ public class RepoController {
 
     @ResponseJsonResult
     @GetMapping("/{repo}/commit-cnt")
-    public Object commitCnt(@PathVariable String repo) {
+    public Object commitCount(@PathVariable String repo) {
 
         log.info("commit count");
-        return service.commitCnt(repo);
+        return service.commitCount(repo);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/pr-cnt")
-    public Object prCnt(@PathVariable String repo) {
+    public Object prCount(@PathVariable String repo) {
 
         log.info("pr count");
-        return service.prCnt(repo);
+        return service.prCount(repo);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/user-cnt")
-    public Object userCnt(@PathVariable String repo) {
+    public Object userCount(@PathVariable String repo) {
 
         log.info("user count");
-        return service.userCnt(repo);
+        return service.userCount(repo);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}branch-cnt")
-    public Object branchCnt(@PathVariable String repo){
+    public Object branchCount(@PathVariable String repo){
 
         log.info("branch count");
-        return service.branchCnt(repo);
+        return service.branchCount(repo);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/commits/{user}")
-    public Object commitCntByUser(@PathVariable String repo,
-                                  @PathVariable String user) {
+    public Object commitCountByUser(@PathVariable String repo, @PathVariable String user) {
         log.info("commit by user count");
-        return service.commitCntByUser(repo, user);
+        return service.commitCountByUser(repo, user);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/pr/{user}")
-    public Object prCntByUser(@PathVariable String repo,
-                              @PathVariable String user) {
+    public Object prCountByUser(@PathVariable String repo, @PathVariable String user) {
         log.info("pr count by user");
-        return service.prCntByUser(repo, user);
+        return service.prCountByUser(repo, user);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/pr/{datePick}")
-    public Object prCntByDate (@PathVariable String repo,
-                               @PathVariable String datePick) {
+    public Object prCountByDate (@PathVariable String repo, @PathVariable String datePick) {
         log.info("pr count by date");
-        return service.prCntByDate(repo, datePick);
+        return service.prCountByDate(repo, datePick);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/commits/{datePick}")
-    public Object commitCntByDate (@PathVariable String repo,
-                                   @PathVariable String datePick) {
+    public Object commitCountByDate (@PathVariable String repo, @PathVariable String datePick) {
         log.info("commit count by date");
-        return service.commitCntByDate(repo, datePick);
+        return service.commitCountByDate(repo, datePick);
     }
 }

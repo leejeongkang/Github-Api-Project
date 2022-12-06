@@ -9,7 +9,8 @@ import java.util.Map;
 @Component
 public class GithubApiToken {
 
-    final String token ="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";
+    //final String token ="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";
+    final String token = "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";
 
     public Map<String, String> accessToken() {
 
