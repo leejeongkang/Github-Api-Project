@@ -1,25 +1,25 @@
 <template>
   <div>
-    <div class="cover">
-      <h1 class="title--color">{{ $t("index.hello") }}</h1>
-    </div>
+    <ul>
+      <li v-for="repo in $store.state.repos">
+        {{ repo.name }}
+      </li>
+    </ul>
   </div>
 </template>
 
-<i18n src="./index.json"></i18n>
 
 <script>
+import { FETCH_REPOS } from '@/store'
 export default {
   name: "Index",
+
   async asyncData({ store }) {
-    await store.dispatch("getCsrfToken");
+    await store.dispatch(FETCH_REPOS);
   },
-  mounted() {
-    sessionStorage.clear();
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "index";
+
 </style>
