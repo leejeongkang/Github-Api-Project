@@ -1,30 +1,7 @@
-import {
-  fetchRepos,
-  fetchBranchList,
-  fetchPrCnt,
-  fetchCommitCnt,
-  fetchBranchCnt,
-  fetchAuthorCnt,
-  fetchCommitCntByUser,
-  fetchPrCntByUser,
-  fetchCommitCntByDate,
-  fetchPrCntByDate,
-} from '@/api'
-
-export const FETCH_REPOS = 'FETCH_REPOS'
-export const FETCH_BRANCH_LIST = 'FETCH_BRANCH_LIST'
-export const FETCH_COMMIT_CNT = 'FETCH_COMMIT_CNT'
-export const FETCH_PR_CNT = 'FETCH_PR_CNT'
-export const FETCH_BRANCH_CNT = 'FETCH_BRANCH_CNT'
-export const FETCH_AUTHOR_CNT = 'FETCH_AUTHOR_CNT'
-export const FETCH_COMMIT_CNT_BY_USER = 'FETCH_COMMIT_CNT_BY_USER'
-export const FETCH_PR_CNT_BY_USER = 'FETCH_PR_CNT_BY_USER'
-export const FETCH_COMMIT_CNT_BY_DATE = 'FETCH_COMMIT_CNT_BY_DATE'
-export const FETCH_PR_CNT_BY_DATE = 'FETCH_PR_CNT_BY_DATE'
+import axios from "axios";
 
 export const state = () => ({
   repos: [],
-  repo: null,
   branchList: [],
   commitCnt: null,
   authorCnt: null,
@@ -74,44 +51,54 @@ export const mutations = {
 };
 
 export const actions = {
-  async [FETCH_REPOS]({ commit }) {
-    const { data } = await fetchRepos()
-    commit('setRepos', data)
+  getRepos({ commit }) {
+    return axios.get('http://localhost:80/repo-api/repos').then((res) => {
+      commit('setRepos', res.data)
+    })
   },
-  async [FETCH_BRANCH_LIST]({ commit }, repo) {
-    const { data } = await fetchBranchList(repo)
-    commit('setBranchList', data)
+  getBranchList({ commit }, repo){
+    return axios.get(`http://localhost:80/repo-api/branch-list/${repo}`).then((res) => {
+      commit('setBranchList', res.data)
+    })
   },
-  async [FETCH_COMMIT_CNT]({ commit }, repo) {
-    const { data } = await fetchCommitCnt(repo)
-    commit('setCommitCnt', data)
+  getCommitCnt({ commit }, repo){
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt`).then((res) => {
+      commit('setCommitCnt', res.data)
+    })
   },
-  async [FETCH_BRANCH_CNT]({ commit }, repo) {
-    const { data } = await fetchBranchCnt(repo)
-    commit('setBranchCnt', data)
+  getBranchCnt({ commit }, repo){
+    return axios.get(`http://localhost:80/repo-api/${repo}/branch-cnt`).then((res) => {
+      commit('setBranchCnt', res.data)
+    })
   },
-  async [FETCH_PR_CNT]({ commit }, repo) {
-    const { data } = await fetchPrCnt(repo)
-    commit('setPrCnt', data)
+  getPrCnt({ commit }, repo){
+    return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt`).then((res) => {
+      commit('setPrCnt', res.data)
+    })
   },
-  async [FETCH_AUTHOR_CNT]({ commit }, repo) {
-    const { data } = await fetchAuthorCnt(repo)
-    commit('setAuthorCnt', data)
+  getUserCnt({ commit }, repo){
+    return axios.get(`http://localhost:80/repo-api/${repo}/user-cnt`).then((res) => {
+      commit('setAuthorCnt', res.data)
+    })
   },
-  async [FETCH_COMMIT_CNT_BY_USER]({ commit }, repo, user){
-    const { data } = await fetchCommitCntByUser(repo, user)
-    commit('setCommitCntByUser', data)
+  getCommitCntByUser({ commit }, { repo, user }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${user}`).then((res) => {
+      commit('setCommitCntByUser', res.data)
+    })
   },
-  async [FETCH_PR_CNT_BY_USER]({ commit }, repo, user){
-    const { data } = await fetchPrCntByUser(repo, user)
-    commit('setPrCntByUser', data)
+  getPrCntByUser({ commit }, { repo, user }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt/${user}`).then((res) => {
+      commit('setPrCntByUser', res.data)
+    })
   },
-  async [FETCH_COMMIT_CNT_BY_DATE]({ commit }, repo, datePick){
-    const { data } = await fetchCommitCntByDate(repo, datePick)
-    commit('setCommitCntByDate', data)
+  getCommitCntByDate({ commit }, { repo, datePick }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${datePick}`).then((res) => {
+      commit('setCommitCntByDate', res.data)
+    })
   },
-  async [FETCH_PR_CNT_BY_DATE]({ commit }, repo, datePick){
-    const { data } = await fetchPrCntByDate(repo, datePick)
-    commit('setPrCntByDate', data)
+  getPrCntByDate({ commit }, { repo, datePick }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${datePick}`).then((res) => {
+      commit('setPrCntByDate', res.data)
+    })
   },
 };
