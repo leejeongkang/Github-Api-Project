@@ -10,7 +10,7 @@ export const state = () => ({
   commitCntByUser: null,
   prCntByUser: null,
   commitCntByDate: null,
-  prCntBYDate: null
+  prCntByDate: null
 });
 
 export const getters = {
