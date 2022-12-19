@@ -4,7 +4,7 @@
       v-model="dateValue"
       :type="type"
       :range="range"
-      :format="dateFormat"
+      :format="DATE_FORMAT.DATETIME"
       value-type="format"
       :confirm="confirm"
       :confirm-text="confirmText"
@@ -12,6 +12,8 @@
       :placeholder="placeholder"
       @change="$emit('change', $event)"
     />
+    <p> {{ repo }}</p>
+    <button @click="onSubmit({repo, dateValue})">click</button>
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
       dateValue: null,
       DATE_FORMAT: {
         DATE: "YYYY-MM-DD",
-        DATETIME: "YYYY-MM-DD HH:mm:ss",
+        DATETIME: "YYYY-MM-DDTHH:MM:SSZ",
         YEAR: "YYYY",
         MONTH: "YYYY-MM",
         TIME: "HH:mm:ss"
@@ -78,6 +80,9 @@ export default {
     },
     placeholder: {
       type: String
+    },
+    repo: {
+      type: String
     }
   },
   computed: {
@@ -92,6 +97,12 @@ export default {
       } else {
         this.dateValue = moment(this.date).format(this.dateFormat);
       }
+    },
+    async onSubmit({repo, dateValue}) {
+      console.log('method' + dateValue + this.repo)
+      await this.$store.dispatch('getCommitCntByDate',{repo, dateValue})
+      //await this.$store.dispatch('getPrCntByDate', {repo, dateValue})
+      this.$emit('update', dateValue)
     }
   },
   mounted() {
