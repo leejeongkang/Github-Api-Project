@@ -9,8 +9,9 @@
     <div class="main">
       <detail-count :repo="repo"></detail-count>
       <date-picker :repo="repo" @update="dateUpdate"></date-picker>
-      <date-count :repo="repo" :date-pick="datePick"></date-count>
+      <date-count :repo="repo"></date-count>
       <highcharts />
+      <user-count :repo="repo"></user-count>
     </div>
   </div>
 </template>
@@ -23,15 +24,14 @@ import DatePicker from '@component/functional/datepicker/date-picker'
 import RepoList from "@component/pages/repoList";
 import Highcharts from "@functional/highcharts/hightcharts";
 import DateCount from "@component/pages/countByDate";
-import {mapActions} from "vuex";
+import UserCount from "@component/pages/counByUser";
 
 export default {
   name: "Index",
-  components: {DateCount, Highcharts, BranchList, RepoList, DetailCount, DatePicker,},
+  components: {UserCount, DateCount, Highcharts, BranchList, RepoList, DetailCount, DatePicker,},
   data() {
     return{
       repo: '',
-      datePick: ''
     }
   },
   methods: {
@@ -66,8 +66,10 @@ export default {
   padding: 8px 12px;
 }
 .main {
-  float: left;
-  width: 73%
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  justify-content: space-between;
 }
 
 </style>
