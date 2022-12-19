@@ -7,7 +7,7 @@ export const state = () => ({
   authorCnt: null,
   branchCnt: null,
   prCnt: null,
-  commitCntByUser: null,
+  commitCntByUser: [],
   prCntByUser: null,
   commitCntByDate: null,
   prCntByDate: null
@@ -81,8 +81,8 @@ export const actions = {
       commit('setAuthorCnt', res.data)
     })
   },
-  getCommitCntByUser({ commit }, { repo, user }) {
-    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${user}`).then((res) => {
+  getCommitCntByUser({ commit }, repo) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/user`).then((res) => {
       commit('setCommitCntByUser', res.data)
     })
   },
@@ -91,13 +91,13 @@ export const actions = {
       commit('setPrCntByUser', res.data)
     })
   },
-  getCommitCntByDate({ commit }, { repo, datePick }) {
-    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${datePick}`).then((res) => {
+  getCommitCntByDate({ commit }, { repo, dateValue }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${dateValue}`).then((res) => {
       commit('setCommitCntByDate', res.data)
     })
   },
-  getPrCntByDate({ commit }, { repo, datePick }) {
-    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${datePick}`).then((res) => {
+  getPrCntByDate({ commit }, { repo, dateValue }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt/${dateValue}`).then((res) => {
       commit('setPrCntByDate', res.data)
     })
   },

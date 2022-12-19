@@ -29,6 +29,7 @@ export default {
       await this.$store.dispatch('getPrCnt', repo)
       await this.$store.dispatch('getUserCnt', repo)
       await this.$store.dispatch('getBranchCnt', repo)
+      await this.$store.dispatch('getCommitCntByUser', repo)
       this.$emit('update',repo)
     },
   }

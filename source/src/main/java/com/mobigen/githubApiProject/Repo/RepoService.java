@@ -1,6 +1,6 @@
-package com.mobigen.GithubApiProject.Repo;
+package com.mobigen.githubApiProject.Repo;
 
-import com.mobigen.GithubApiProject.Config.GithubApiToken;
+import com.mobigen.githubApiProject.Config.GithubApiToken;
 import com.mobigen.framework.result.JsonResult;
 import com.mobigen.framework.utility.restful.RestAPI;
 import lombok.AllArgsConstructor;
@@ -18,8 +18,7 @@ public class RepoService {
     private List<Map<String, Object>> getName (JsonResult result) {
         List<Map<String, Object>> list = (List<Map<String, Object>>) result.getData();
 
-        String [] keys = { "name", "id" };
-
+       String [] keys = { "name", "date" };
         for (Map<String, Object> item : list) {
             Set<String> keySet = new HashSet<String>();
             keySet.addAll(item.keySet());
@@ -28,8 +27,20 @@ public class RepoService {
         }
         return list;
     }
-    public Object repoList() {
-        JsonResult result = this.restAPI.get(urlService.getRepoListURL(),null, githubApiToken.accessToken());
+    private List<Map<String, Object>> getCommit (JsonResult result) {
+        List<Map<String, Object>> list = (List<Map<String, Object>>) result.getData();
+
+        String [] keys = { "sha", "commit" };
+        for (Map<String, Object> item : list) {
+            Set<String> keySet = new HashSet<String>();
+            keySet.addAll(item.keySet());
+            keySet.removeAll(Arrays.asList(keys));
+            item.keySet().removeAll(keySet);
+        }
+        return list;
+    }
+    public List<Map<String, Object>> repoList() {
+        JsonResult result = restAPI.get(urlService.getRepoListURL(),null, githubApiToken.accessToken());
 
         return getName(result);
     }
@@ -43,7 +54,7 @@ public class RepoService {
     public Integer commitCount(String repo) {
         JsonResult result = this.restAPI.get(urlService.getCommitCountURL(repo),null, githubApiToken.accessToken());
 
-        return getName(result).size();
+        return getCommit(result).size();
     }
 
     public Integer prCount(String repo) {
@@ -64,13 +75,13 @@ public class RepoService {
         return getName(result).size();
     }
 
-    public Integer commitCountByUser(String repo, String user) {
-        Map<String, String> userMap =  new HashMap<>();
-        userMap.put("author", user);
+    public Object commitCountByUser(String repo) {
+        //Map<String, String> userMap =  new HashMap<>();
+        //userMap.put("author", user);
 
-        JsonResult result = this.restAPI.get(urlService.getCommitCountByUserURL(repo), userMap, githubApiToken.accessToken());
+        JsonResult result = this.restAPI.get(urlService.getCommitCountByUserURL(repo), githubApiToken.accessToken());
 
-        return getName(result).size();
+        return getCommit(result);
     }
     public Integer prCountByUser(String repo, String user) {
         Map<String, String> userMap = new HashMap<>();
@@ -81,33 +92,33 @@ public class RepoService {
         return getName(result).size();
     }
 
-    public Integer commitCountByDate(String repo, String datePick) {
-        Map<String, String> dateMap = getDate(datePick);
+    public Integer commitCountByDate(String repo, String dateValue) {
+        //Map<String, String> dateMap = getDate(dateValue);
 
-        JsonResult result = restAPI.get(urlService.getCommitCountByDateURL(repo), dateMap, githubApiToken.accessToken());
+        JsonResult result = restAPI.get(urlService.getCommitCountByDateURL(repo, dateValue), githubApiToken.accessToken());
 
-        return getName(result).size();
+        return getCommit(result).size();
     }
 
-    public Integer prCountByDate(String repo, String datePick) {
-        Map<String, String> dateMap = getDate(datePick);
+    public Integer prCountByDate(String repo, String dateValue) {
+        Map<String, String> dateMap = getDate(dateValue);
 
         JsonResult result = restAPI.get(urlService.getPrCountByDateURL(repo), dateMap, githubApiToken.accessToken());
 
         return getName(result).size();
     }
 
-    private Map<String, String> getDate(String datePick) {
+    private Map<String, String> getDate(String dateValue) {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.HOUR, 23);
         calendar.add(Calendar.MINUTE, 59);
         calendar.add(Calendar.SECOND, 59);
-        String untilDate = datePick + calendar;
+        String untilDate = dateValue + calendar;
 
         Map<String, String> map = new HashMap<>();
-        map.put("since", datePick);
+        map.put("since", dateValue);
         map.put("until", untilDate);
 
         return map;
