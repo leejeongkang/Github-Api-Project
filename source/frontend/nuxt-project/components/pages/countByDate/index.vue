@@ -10,6 +10,8 @@
 
 <script>
 
+import {mapState} from "vuex";
+
 export default {
   name: "dateCount",
   props: {
@@ -19,6 +21,9 @@ export default {
     datePick: {
       type: String
     }
+  },
+  computed: {
+    ...mapState(['commitCntByDate', 'prCntByDate'])
   }
 
 }

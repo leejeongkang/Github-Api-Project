@@ -1,15 +1,17 @@
 <template>
   <div>
     <h2>Commit, Author, Branches, PullRequest Count</h2>
-    <p>commit {{ $store.state.commitCnt }}</p>
-    <p>pr {{ $store.state.prCnt }}</p>
-    <p>author {{ $store.state.authorCnt }}</p>
-    <p>branch {{ $store.state.branchCnt }}</p>
+    <p>commit {{ commitCnt }}</p>
+    <p>pr {{ prCnt }}</p>
+    <p>author {{ authorCnt }}</p>
+    <p>branch {{ branchCnt }}</p>
     <p>props : {{ repo }}</p>
   </div>
 </template>
 
 <script>
+
+import {mapState} from "vuex";
 
 export default {
   name: "detailCount",
@@ -18,5 +20,8 @@ export default {
       type: String
     }
   },
+  computed: {
+    ...mapState(['commitCnt', 'prCnt', 'authorCnt', 'branchCnt'])
+  }
 }
 </script>
