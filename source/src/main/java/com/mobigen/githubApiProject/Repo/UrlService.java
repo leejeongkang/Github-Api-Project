@@ -15,7 +15,7 @@ public class UrlService {
     static final String userCountURL = "/contributors?state=all";
     static final String branchCountURL = "/branches?state=all";
     static final String commitCountByUserURL = "/commits?per_page=100";
-    static final String prCountByUserURL = "/pulls?state=all";
+    static final String prCountByUserURL = "/pulls?state=all&per_page=100";
     static final String commitCountByDateURL = "/commits?per_page=100&since=";
     static final String prCountByDateURL = "/pulls?state=all&per_page=100";
 

@@ -39,6 +39,18 @@ public class RepoService {
         }
         return list;
     }
+    private List<Map<String, Object>> getPr (JsonResult result) {
+        List<Map<String, Object>> list = (List<Map<String, Object>>) result.getData();
+
+        String [] keys = { "number", "id", "created_at" };
+        for (Map<String, Object> item : list) {
+            Set<String> keySet = new HashSet<String>();
+            keySet.addAll(item.keySet());
+            keySet.removeAll(Arrays.asList(keys));
+            item.keySet().removeAll(keySet);
+        }
+        return list;
+    }
     public List<Map<String, Object>> repoList() {
         JsonResult result = restAPI.get(urlService.getRepoListURL(),null, githubApiToken.accessToken());
 
@@ -83,13 +95,10 @@ public class RepoService {
 
         return getCommit(result);
     }
-    public Integer prCountByUser(String repo, String user) {
-        Map<String, String> userMap = new HashMap<>();
-        userMap.put("author", user);
+    public Object prCountByUser(String repo) {
+        JsonResult result = this.restAPI.get(urlService.getPrCountByUserURL(repo), githubApiToken.accessToken());
 
-        JsonResult result = this.restAPI.get(urlService.getPrCountByUserURL(repo), userMap, githubApiToken.accessToken());
-
-        return getName(result).size();
+        return getPr(result);
     }
 
     public Integer commitCountByDate(String repo, String dateValue) {
@@ -105,7 +114,7 @@ public class RepoService {
 
         JsonResult result = restAPI.get(urlService.getPrCountByDateURL(repo), dateMap, githubApiToken.accessToken());
 
-        return getName(result).size();
+        return getPr(result).size();
     }
 
     private Map<String, String> getDate(String dateValue) {

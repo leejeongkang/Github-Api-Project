@@ -8,7 +8,7 @@ export const state = () => ({
   branchCnt: null,
   prCnt: null,
   commitCntByUser: [],
-  prCntByUser: null,
+  prCntByUser: [],
   commitCntByDate: null,
   prCntByDate: null
 });
@@ -86,8 +86,8 @@ export const actions = {
       commit('setCommitCntByUser', res.data)
     })
   },
-  getPrCntByUser({ commit }, { repo, user }) {
-    return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt/${user}`).then((res) => {
+  getPrCntByUser({ commit }, repo) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt/user`).then((res) => {
       commit('setPrCntByUser', res.data)
     })
   },

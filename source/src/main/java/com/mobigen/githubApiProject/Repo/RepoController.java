@@ -72,10 +72,10 @@ public class RepoController {
     }
 
     @ResponseJsonResult
-    @GetMapping("/{repo}/pr-cnt/{user}")
-    public Object prCountByUser(@PathVariable String repo, @PathVariable String user) {
+    @GetMapping("/{repo}/pr-cnt/user")
+    public Object prCountByUser(@PathVariable String repo) {
         log.info("pr count by user");
-        return service.prCountByUser(repo, user);
+        return service.prCountByUser(repo);
     }
 
     @ResponseJsonResult
