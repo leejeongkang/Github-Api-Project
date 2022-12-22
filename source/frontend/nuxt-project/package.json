@@ -23,6 +23,7 @@
     "@nuxtjs/svg-sprite": "^0.5.2",
     "cookie-universal-nuxt": "^2.1.5",
     "core-js": "^3.19.3",
+    "highcharts": "^10.3.2",
     "highcharts-vue": "^1.4.0",
     "moment": "^2.26.0",
     "nuxt": "^2.15.8",

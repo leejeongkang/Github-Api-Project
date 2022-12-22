@@ -3,7 +3,7 @@
     <ul>
       <li v-for="repo in repos"
         :key="repo.name"
-        @click="fetch(repo.name)">
+        @click="showInform(repo.name)">
         <b>{{ repo.name }}</b>
       </li>
     </ul>
@@ -15,7 +15,7 @@ import {mapState} from 'vuex'
 export default {
   name: "repoList",
   async fetch() {
-    await this.$store.dispatch("getRepos")
+    await this.$store.dispatch('getRepos')
   },
   data() {
     return{
@@ -26,15 +26,13 @@ export default {
     ...mapState(["repos"])
   },
   methods: {
-    async fetch(repo){
-      await this.$store.dispatch('getBranchList', repo)
-      await this.$store.dispatch('getCommitCnt', repo)
-      await this.$store.dispatch('getPrCnt', repo)
-      await this.$store.dispatch('getUserCnt', repo)
-      await this.$store.dispatch('getBranchCnt', repo)
-      await this.$store.dispatch('getCommitCntByUser', repo)
-      await this.$store.dispatch('getPrCntByUser', repo)
+    async showInform(repo){
+      /*const result = await Promise.all([
+        'getCommitCnt', 'getPrCnt', 'getUserCnt', 'getBranchCnt',
+          'getCommitCntByUser', 'getPrCntByUser', 'getBranchList'
+      ].map(repo))*/
       this.$emit('update',repo)
+      await this.$store.dispatch('getBranchList', repo)
     },
   }
 };

@@ -7,31 +7,48 @@
       <branch-list :repo="repo"></branch-list>
     </div>
     <div class="main">
-      <detail-count :repo="repo"></detail-count>
-      <date-picker :repo="repo" @update="dateUpdate"></date-picker>
-      <date-count :repo="repo"></date-count>
-      <highcharts />
-      <user-count :repo="repo"></user-count>
+      <div class="detail-count">
+        <count :repo="repo"></count>
+      </div>
+      <div class="date-count">
+        <date-picker :repo="repo" @update="dateUpdate"></date-picker>
+        <count-by-date :repo="repo"></count-by-date>
+      </div>
+      <div class="user-count">
+        <highcharts />
+        <count-by-user :repo="repo"></count-by-user>
+      </div>
     </div>
   </div>
 </template>
 
 
 <script>
-import BranchList from "@component/pages/branchList";
-import DetailCount from "@component/pages/count";
 import DatePicker from '@component/functional/datepicker/date-picker'
-import RepoList from "@component/pages/repoList";
 import Highcharts from "@functional/highcharts/hightcharts";
-import DateCount from "@component/pages/countByDate";
-import UserCount from "@component/pages/counByUser";
 
 export default {
   name: "Index",
-  components: {UserCount, DateCount, Highcharts, BranchList, RepoList, DetailCount, DatePicker,},
+  components: {Highcharts, DatePicker,},
   data() {
     return{
       repo: '',
+      options: {
+        title: {
+          text: 'text high charts'
+        },
+        series: [{
+          type: 'pie',
+          name: '',
+          innerSize: '45%',
+          data: [
+            ['1', 10.0],
+            ['2', 20.0],
+            ['3', 30.0],
+            ['4', 40.0]
+          ]
+        }]
+      }
     }
   },
   methods: {
@@ -70,6 +87,18 @@ export default {
   align-items: center;
   padding: 8px 12px;
   justify-content: space-between;
+}
+.detail-count {
+  width: 100px;
+  height: 100px;
+}
+.date-count {
+  width: 100px;
+  height: 100px;
+}
+.user-count {
+  width: 100px;
+  height: 100px;
 }
 
 </style>

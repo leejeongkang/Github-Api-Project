@@ -3,8 +3,8 @@
     <h3>날짜별 커밋, 피알갯수</h3>
     <p>{{ repo }}</p>
     <p>{{ datePick }}</p>
-    <p>커밋 : {{ $store.state.commitCntByDate }}</p>
-    <p>피알 : {{ $store.state.prCntByDate }}</p>
+    <p>커밋 : {{ commitCntByDate }}</p>
+    <p>피알 : {{ prCntByDate }}</p>
   </div>
 </template>
 
