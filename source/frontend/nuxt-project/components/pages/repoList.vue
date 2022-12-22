@@ -11,21 +11,22 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 export default {
   name: "repoList",
-  async fetch() {
-    await this.$store.dispatch('getRepos')
-  },
+
   data() {
     return{
       repo: ''
     }
   },
   computed: {
-    ...mapState(["repos"])
+    ...mapState({
+      repos: state => state.repos
+    })
   },
   methods: {
+    ...mapActions({getRepos: 'getRepos'}),
     async showInform(repo){
       /*const result = await Promise.all([
         'getCommitCnt', 'getPrCnt', 'getUserCnt', 'getBranchCnt',

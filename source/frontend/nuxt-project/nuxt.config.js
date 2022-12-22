@@ -65,7 +65,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/axios.js",
-    // "~/plugins/persisted-state.client.js",
+    "~/plugins/persisted-state.client.js",
     "~plugins/vue-js-modal.js"
     //"~plugins/v-tooltip.js"
     //"~plugins/v-click-outside.js"
