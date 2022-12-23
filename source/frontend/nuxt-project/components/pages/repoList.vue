@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>repository</h1>
     <ul>
       <li v-for="repo in repos"
         :key="repo.name"
@@ -14,7 +15,6 @@
 import {mapActions, mapState} from 'vuex'
 export default {
   name: "repoList",
-
   data() {
     return{
       repo: ''
@@ -26,14 +26,16 @@ export default {
     })
   },
   methods: {
-    ...mapActions({getRepos: 'getRepos'}),
-    async showInform(repo){
-      /*const result = await Promise.all([
-        'getCommitCnt', 'getPrCnt', 'getUserCnt', 'getBranchCnt',
-          'getCommitCntByUser', 'getPrCntByUser', 'getBranchList'
-      ].map(repo))*/
+    ...mapActions(['getRepos']),
+    showInform(repo){
       this.$emit('update',repo)
-      await this.$store.dispatch('getBranchList', repo)
+      return Promise.all([
+        this.$store.dispatch('getBranchList', repo),
+        this.$store.dispatch('getCommitCnt', repo),
+        this.$store.dispatch('getBranchCnt', repo),
+        this.$store.dispatch('getUserCnt', repo),
+        this.$store.dispatch('getPrCnt', repo),
+      ])
     },
   }
 };
