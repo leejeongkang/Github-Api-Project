@@ -99,13 +99,13 @@ properties:
       permit-alls: /**, /h2-console/**, /sample/public-key, /sample/authenticate, /error, /test, /api/**
       redirect-url: /
       iframe-option: disable #disable, same-origin, deny
-      csrf: true
+      csrf: false
       cors:
         pattern: /** #/auth/**
-        allowed-origins: http://localhost:3000 #"*" #http://server-name:port
+        allowed-origins: http://localhost:4000 #"*" #http://server-name:port
         allowed-methods: "*" #PUT,DELETE,GET,POST ...
         allowed-headers: "*" #Context-Type, ...
-        allow-credentials: true
+        allow-credentials: false
       same-site: Lax #None, Lax, Strict
     token:
       name: x-access-token
