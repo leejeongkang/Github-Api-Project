@@ -1,4 +1,4 @@
-package com.mobigen.githubApiProject.Repo;
+package com.mobigen.githubApiProject.repo;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,14 +10,14 @@ public class UrlService {
     static final String GITHUB_URL = "https://api.github.com/repos/" + OWNER + "/";
     static final String REPO_LIST_URL = "https://api.github.com/orgs/" + OWNER + "/repos?per_page=100";
     static final String BRANCH_LIST_URL = "/branches";
-    static final String COMMIT_COUNT_URL = "/commits?per_page=100";
+    static final String COMMIT_COUNT_URL = "/commits";
     static final String PR_COUNT_URL = "/pulls?state=all&per_page=100";
     static final String USER_COUNT_URL = "/contributors?state=all";
     static final String BRANCH_COUNT_URL = "/branches?state=all";
-    static final String COMMIT_COUNT_BY_USER_URL = "/commits?per_page=100";
-    static final String PR_COUNT_BY_USER_URL = "/pulls?state=all&per_page=100";
-    static final String COMMIT_COUNT_BY_DATE_URL = "/commits?per_page=100&since=";
-    static final String PR_COUNT_BY_DATE_URL = "/pulls?state=all&per_page=100";
+    static final String COMMIT_COUNT_BY_USER_URL = "/commits";
+    static final String PR_COUNT_BY_USER_URL = "/pulls?state=all";
+    static final String COMMIT_COUNT_BY_DATE_URL = "/commits";
+    static final String PR_COUNT_BY_DATE_URL = "/pulls?state=all";
 
     public String getRepoListURL() {
         return REPO_LIST_URL;
@@ -43,8 +43,8 @@ public class UrlService {
     public String getPrCountByUserURL(String repo) {
         return GITHUB_URL + repo + PR_COUNT_BY_USER_URL;
     }
-    public String getCommitCountByDateURL(String repo, String dateValue) {
-        return GITHUB_URL + repo + COMMIT_COUNT_BY_DATE_URL + dateValue;
+    public String getCommitCountByDateURL(String repo) {
+        return GITHUB_URL + repo + COMMIT_COUNT_BY_DATE_URL;
     }
     public String getPrCountByDateURL(String repo) {
         return GITHUB_URL + repo + PR_COUNT_BY_DATE_URL;
