@@ -15,9 +15,9 @@ public class UrlService {
     static final String USER_COUNT_URL = "/contributors?state=all";
     static final String BRANCH_COUNT_URL = "/branches?state=all";
     static final String COMMIT_COUNT_BY_USER_URL = "/commits";
-    static final String PR_COUNT_BY_USER_URL = "/pulls?state=all";
+    static final String PR_COUNT_BY_USER_URL = "/pulls";
     static final String COMMIT_COUNT_BY_DATE_URL = "/commits";
-    static final String PR_COUNT_BY_DATE_URL = "/pulls?state=all";
+    static final String PR_COUNT_BY_DATE_URL = "/pulls";
 
     public String getRepoListURL() {
         return REPO_LIST_URL;
