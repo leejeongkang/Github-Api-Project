@@ -18,7 +18,7 @@ public class GithubApiToken {
 
         Map<String, String> accessToken = new HashMap<>();
 
-        accessToken.put("Access-Token", token);
+        accessToken.put("Authorization", token);
         return accessToken;
     }
 }
