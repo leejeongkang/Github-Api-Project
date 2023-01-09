@@ -1,4 +1,4 @@
-package com.mobigen.githubApiProject.Repo;
+package com.mobigen.githubApiProject.repo;
 
 import com.mobigen.framework.result.annotation.ResponseJsonResult;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @RequestMapping("/repo-api")
@@ -34,12 +35,12 @@ public class RepoController {
 
     @ResponseJsonResult
     @GetMapping("/{repo}/commit-cnt")
-    public Object commitCount(@PathVariable String repo) {
+    public Object commitCount(@PathVariable String repo,
+                              @RequestParam(defaultValue = "1") int currentPage ) {
 
         log.info("commit count");
-        return service.commitCount(repo);
+        return service.commitCount(repo, currentPage);
     }
-
     @ResponseJsonResult
     @GetMapping("/{repo}/pr-cnt")
     public Object prCount(@PathVariable String repo) {
@@ -66,29 +67,38 @@ public class RepoController {
 
     @ResponseJsonResult
     @GetMapping("/{repo}/commit-cnt/user")
-    public Object commitCountByUser(@PathVariable String repo) {
+    public Object commitCountByUser(@PathVariable String repo,
+                                    @RequestParam(required = false) Integer page) {
         log.info("commit by user count");
-        return service.commitCountByUser(repo);
+        log.info(repo);
+        log.info("commit page: " + String.valueOf(page));
+        return service.commitCountByUser(repo, page);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/pr-cnt/user")
-    public Object prCountByUser(@PathVariable String repo) {
+    public Object prCountByUser(@PathVariable String repo,
+                                @RequestParam(required = false) Integer page) {
         log.info("pr count by user");
-        return service.prCountByUser(repo);
+        log.info("pr page: " + String.valueOf(page));
+        return service.prCountByUser(repo, page);
     }
 
     @ResponseJsonResult
     @GetMapping("/{repo}/pr-cnt/{dateValue}")
     public Object prCountByDate (@PathVariable String repo, @PathVariable String dateValue) {
         log.info("pr count by date");
-        return service.prCountByDate(repo, dateValue);
+        return service.prCountByDate(repo);
     }
 
     @ResponseJsonResult
-    @GetMapping("/{repo}/commit-cnt/{dateValue}")
-    public Object commitCountByDate (@PathVariable String repo, @PathVariable String dateValue) {
+    @GetMapping("/{repo}/commit-cnt/date")
+    public Object commitCountByDate (@PathVariable String repo,
+                                     @RequestParam String since,
+                                     @RequestParam String until) {
         log.info("commit count by date");
-        return service.commitCountByDate(repo, dateValue);
+        log.info(since);
+        log.info(until);
+        return service.commitCountByDate(repo, since, until);
     }
 }

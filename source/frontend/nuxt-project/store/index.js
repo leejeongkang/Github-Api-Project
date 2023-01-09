@@ -3,14 +3,14 @@ import axios from "axios";
 export const state = () => ({
   repos: [],
   branchList: [],
-  commitCnt: null,
+  commitCnt: [],
   authorCnt: null,
   branchCnt: null,
   prCnt: null,
   commitCntByUser: [],
   prCntByUser: [],
-  commitCntByDate: null,
-  prCntByDate: null
+  commitCntByDate: [],
+  prCntByDate: null,
 });
 
 export const getters = {
@@ -86,13 +86,23 @@ export const actions = {
       commit('setCommitCntByUser', res.data)
     })
   },
+  getCommitCntByUserPage({ commit }, {repo, page}) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/user`, {params: {page: page}}).then((res) =>{
+      commit('setCommitCntByUser', res.data)
+    })
+  },
   getPrCntByUser({ commit }, repo) {
     return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt/user`).then((res) => {
       commit('setPrCntByUser', res.data)
     })
   },
-  getCommitCntByDate({ commit }, { repo, dateValue }) {
-    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/${dateValue}`).then((res) => {
+  getPrCntByUserPage({ commit }, {repo, page}) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/pr-cnt/user`, {params: {page: page}}).then((res) => {
+      commit('setPrCntByUser', res.data)
+    })
+  },
+  getCommitCntByDate({ commit }, { repo, since, until }) {
+    return axios.get(`http://localhost:80/repo-api/${repo}/commit-cnt/date`, {params: {since: since, until: until}}).then((res) => {
       commit('setCommitCntByDate', res.data)
     })
   },

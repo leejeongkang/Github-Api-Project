@@ -1,11 +1,23 @@
 <template>
   <div>
-    <h2>Commit, Author, Branches, PullRequest Count</h2>
-    <p>commit {{ commitCnt }}</p>
-    <p>pr {{ prCnt }}</p>
-    <p>author {{ authorCnt }}</p>
-    <p>branch {{ branchCnt }}</p>
-    <p>props : {{ repo }}</p>
+    <table>
+      <thead>
+      <tr>
+        <th>COMMIT</th>
+        <th>PR</th>
+        <th>USER</th>
+        <th>BRANCH</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{ commitCnt.commitCount }}</td>
+        <td>{{ prCnt }}</td>
+        <td>{{ authorCnt }}</td>
+        <td>{{ branchCnt }}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -25,3 +37,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+table{
+  width: 75%;
+  text-align : left;
+}
+table th{
+  padding : 12px;
+  border-bottom: 2px solid  darkgray;
+}
+table td{
+  padding : 12px;
+}
+</style>
