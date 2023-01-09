@@ -11,12 +11,12 @@
         <count :repo="repo"></count>
       </div>
       <div class="date-count">
-        <date-picker :repo="repo" @update="dateUpdate"></date-picker>
-        <count-by-date :repo="repo"></count-by-date>
+        <date-picker :repo="repo"></date-picker>
+        <count-by-date :repo="repo" ></count-by-date>
       </div>
       <div class="user-count">
-        <highcharts />
-        <count-by-user :repo="repo"></count-by-user>
+        <commit-count-by-user :repo="repo" @update="pageNum" />
+        <pr-count-by-user :repo="repo" />
       </div>
     </div>
   </div>
@@ -25,40 +25,24 @@
 
 <script>
 import DatePicker from '@component/functional/datepicker/date-picker'
-import Highcharts from "@functional/highcharts/hightcharts";
 
 export default {
   name: "Index",
-  components: {Highcharts, DatePicker,},
+  components: { DatePicker,},
   data() {
     return{
       repo: '',
-      options: {
-        title: {
-          text: 'text high charts'
-        },
-        series: [{
-          type: 'pie',
-          name: '',
-          innerSize: '45%',
-          data: [
-            ['1', 10.0],
-            ['2', 20.0],
-            ['3', 30.0],
-            ['4', 40.0]
-          ]
-        }]
-      }
+      page: ''
     }
   },
   methods: {
     timeChanged(repo) {
       this.repo = repo
     },
-    dateUpdate(dateValue) {
-      this.datePick = dateValue
-      console.log(this.datePick)
-    },
+    pageNum(page) {
+      console.log(page)
+      this.page = page
+    }
   }
 };
 </script>
@@ -89,15 +73,15 @@ export default {
   justify-content: space-between;
 }
 .detail-count {
-  width: 100px;
+  width: 800px;
   height: 100px;
 }
 .date-count {
-  width: 100px;
+  width: 1000px;
   height: 100px;
 }
 .user-count {
-  width: 100px;
+  width: 1200px;
   height: 100px;
 }
 
