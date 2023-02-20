@@ -15,6 +15,9 @@
 import {mapActions, mapState} from 'vuex'
 export default {
   name: "repoList",
+  async fetch() {
+    await this.$store.dispatch('getRepos')
+  },
   data() {
     return{
       repo: ''
@@ -26,7 +29,6 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['getRepos']),
     showInform(repo){
       this.$emit('update',repo)
       return Promise.all([
@@ -35,6 +37,9 @@ export default {
         this.$store.dispatch('getBranchCnt', repo),
         this.$store.dispatch('getUserCnt', repo),
         this.$store.dispatch('getPrCnt', repo),
+        this.$store.dispatch('getCommitCntByUser', repo),
+        this.$store.dispatch('getPrCntByUser', repo)
+        //this.$store.dispatch('getCommitPagination', repo)
       ])
     },
   }

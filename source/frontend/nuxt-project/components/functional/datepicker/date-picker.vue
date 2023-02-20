@@ -4,7 +4,7 @@
       v-model="dateValue"
       :type="type"
       :range="range"
-      :format="DATE_FORMAT.DATETIME"
+      :format="DATE_FORMAT.DATE"
       value-type="format"
       :confirm="confirm"
       :confirm-text="confirmText"
@@ -12,8 +12,7 @@
       :placeholder="placeholder"
       @change="$emit('change', $event)"
     />
-    <p> {{ repo }}</p>
-    <button @click="onSubmit({repo, dateValue})">click</button>
+    <button @click="onSubmit({repo, since, until})">click</button>
   </div>
 </template>
 
@@ -48,12 +47,14 @@ export default {
     date: {
       type: String
     },
+    /*
     startDate: {
       type: String
     },
     endDate: {
       type: String
     },
+     */
     format: {
       type: String
     },
@@ -64,7 +65,7 @@ export default {
     },
     range: {
       type: Boolean,
-      default: false
+      default: true
     },
     confirm: {
       type: Boolean,
@@ -93,16 +94,16 @@ export default {
   methods: {
     changeDateFormat() {
       if (this.range) {
-        this.dateValue = [moment(this.startDate).format(this.dateFormat), moment(this.endDate).format(this.dateFormat)];
+        this.dateValue = [moment(this.since).format(this.dateFormat), moment(this.until).format(this.dateFormat)];
       } else {
         this.dateValue = moment(this.date).format(this.dateFormat);
       }
     },
-    async onSubmit({repo, dateValue}) {
-      console.log('method' + dateValue + this.repo)
-      await this.$store.dispatch('getCommitCntByDate',{repo, dateValue})
-      //await this.$store.dispatch('getPrCntByDate', {repo, dateValue})
-      this.$emit('update', dateValue)
+    async onSubmit({repo, since, until}) {
+      since = this.dateValue[0]
+      until = this.dateValue[1]
+      console.log('start: ' + since + 'end: ' + until + 'repo: ' + this.repo)
+      await this.$store.dispatch('getCommitCntByDate',{repo, since, until})
     }
   },
   mounted() {
